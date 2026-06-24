@@ -1,0 +1,821 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System — Rheon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+    /* ── Design tokens — Rheon ── */
+    :root {
+      --background: oklch(1 0 0);
+      --foreground: oklch(0.1 0 0);
+      --card: oklch(1 0 0);
+      --card-foreground: oklch(0.1 0 0);
+      --popover: oklch(1 0 0);
+      --popover-foreground: oklch(0.1 0 0);
+      --primary: oklch(0.1 0 0);
+      --primary-foreground: oklch(1 0 0);
+      --secondary: oklch(0.96 0 0);
+      --secondary-foreground: oklch(0.1 0 0);
+      --muted: oklch(0.96 0 0);
+      --muted-foreground: oklch(0.45 0 0);
+      --accent: oklch(0.96 0 0);
+      --accent-foreground: oklch(0.1 0 0);
+      --destructive: oklch(0.577 0.245 27.325);
+      --border: oklch(0.88 0 0);
+      --input: oklch(0.88 0 0);
+      --ring: oklch(0.5 0 0);
+      --chart-1: oklch(0.2 0 0);
+      --chart-2: oklch(0.35 0 0);
+      --chart-3: oklch(0.5 0 0);
+      --chart-4: oklch(0.65 0 0);
+      --chart-5: oklch(0.8 0 0);
+      --radius: 0.5rem;
+      --radius-sm: calc(var(--radius) * 0.6);
+      --radius-md: calc(var(--radius) * 0.8);
+      --radius-lg: var(--radius);
+      --radius-xl: calc(var(--radius) * 1.4);
+      --radius-2xl: calc(var(--radius) * 1.8);
+      --radius-3xl: calc(var(--radius) * 2.2);
+      --radius-4xl: calc(var(--radius) * 2.6);
+      --sidebar: oklch(0.985 0 0);
+      --sidebar-foreground: oklch(0.1 0 0);
+      --sidebar-border: oklch(0.88 0 0);
+      --font-sans: "Inter", system-ui, sans-serif;
+      --doc-sidebar-width: 240px;
+      --doc-max-width: 1100px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; padding: 0; margin: 0; }
+    html { scroll-behavior: smooth; font-family: var(--font-sans); }
+    body {
+      font-family: var(--font-sans);
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.625;
+      color: var(--foreground);
+      background: var(--background);
+    }
+
+    /* ── Layout ── */
+    .doc-layout {
+      display: grid;
+      grid-template-columns: var(--doc-sidebar-width) 1fr;
+      min-height: 100vh;
+    }
+    .doc-sidebar {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      padding: 1.5rem 1rem;
+      overflow-y: auto;
+      background: var(--sidebar);
+      border-right: 1px solid var(--sidebar-border);
+    }
+    .doc-sidebar__brand {
+      margin-bottom: 0.125rem;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--foreground);
+    }
+    .doc-sidebar__subtitle {
+      margin-bottom: 1.5rem;
+      font-size: 0.6875rem;
+      line-height: 1.4;
+      color: var(--muted-foreground);
+    }
+    .doc-nav { display: flex; flex-direction: column; gap: 0.125rem; list-style: none; }
+    .doc-nav a {
+      display: block;
+      padding: 0.375rem 0.625rem;
+      font-size: 0.8125rem;
+      color: var(--muted-foreground);
+      text-decoration: none;
+      border-radius: var(--radius-sm);
+      transition: background 0.15s, color 0.15s;
+    }
+    .doc-nav a:hover { color: var(--foreground); background: var(--accent); }
+
+    .doc-main {
+      max-width: calc(var(--doc-max-width) + var(--doc-sidebar-width));
+      padding: 2rem 2.5rem 4rem;
+    }
+    .doc-hero {
+      padding-bottom: 2rem;
+      margin-bottom: 3rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .doc-hero h1 {
+      margin-bottom: 0.5rem;
+      font-size: 1.75rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .doc-hero p {
+      max-width: 42rem;
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: var(--muted-foreground);
+    }
+    .doc-note {
+      max-width: 42rem;
+      padding: 0.75rem 1rem;
+      margin-top: 1rem;
+      font-size: 0.8125rem;
+      color: var(--muted-foreground);
+      background: var(--muted);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .doc-note strong { color: var(--foreground); }
+
+    section { margin-bottom: 3.5rem; scroll-margin-top: 1.5rem; }
+    .section-title {
+      margin-bottom: 0.375rem;
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .section-desc {
+      max-width: 40rem;
+      margin-bottom: 1.5rem;
+      font-size: 0.8125rem;
+      color: var(--muted-foreground);
+    }
+    .subsection-title {
+      margin: 1.5rem 0 0.75rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--foreground);
+    }
+
+    /* ── Color swatches ── */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .color-swatch {
+      overflow: hidden;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .color-swatch__preview { width: 100%; height: 64px; }
+    .color-swatch__info { padding: 0.625rem 0.75rem; }
+    .color-swatch__name { margin-bottom: 0.125rem; font-size: 0.75rem; font-weight: 600; }
+    .color-swatch__token { font-family: ui-monospace, monospace; font-size: 0.6875rem; color: var(--muted-foreground); }
+    .color-swatch__value { margin-top: 0.25rem; font-family: ui-monospace, monospace; font-size: 0.625rem; color: var(--muted-foreground); word-break: break-all; }
+
+    /* ── Typography ── */
+    .type-sample {
+      padding: 1rem 1.25rem;
+      margin-bottom: 0.75rem;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+    }
+    .type-sample__meta { margin-bottom: 0.5rem; font-family: ui-monospace, monospace; font-size: 0.6875rem; color: var(--muted-foreground); }
+    .type-xs  { font-size: 0.625rem; line-height: 1.625; }
+    .type-sm  { font-size: 0.75rem;  line-height: 1.625; }
+    .type-base{ font-size: 0.875rem; line-height: 1.625; }
+    .type-lg  { font-size: 1rem;     line-height: 1.625; }
+    .type-xl  { font-size: 1.25rem;  line-height: 1.4; }
+    .type-price { font-size: 1rem; font-weight: 700; line-height: 1.25; color: var(--primary); }
+    .type-price-old { font-size: 0.625rem; font-weight: 500; line-height: 1.25; color: var(--muted-foreground); text-decoration: line-through; }
+    .weight-medium { font-weight: 500; }
+    .weight-bold   { font-weight: 700; }
+
+    /* ── Radius & spacing ── */
+    .radius-grid { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .radius-item { display: flex; flex-direction: column; gap: 0.5rem; align-items: center; }
+    .radius-box { width: 72px; height: 72px; background: var(--primary); opacity: 0.85; }
+    .radius-label { font-family: ui-monospace, monospace; font-size: 0.6875rem; color: var(--muted-foreground); text-align: center; }
+    .spacing-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+    .spacing-row { display: flex; gap: 1rem; align-items: center; }
+    .spacing-bar { height: 1.5rem; background: var(--primary); border-radius: 2px; opacity: 0.7; }
+    .spacing-label { min-width: 120px; font-family: ui-monospace, monospace; font-size: 0.6875rem; color: var(--muted-foreground); }
+
+    /* ── Buttons ── */
+    .btn {
+      display: inline-flex;
+      gap: 0.25rem;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-sans);
+      font-weight: 500;
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+      outline: none;
+      background-clip: padding-box;
+      border: 1px solid transparent;
+      border-radius: var(--radius-md);
+      transition: all 0.15s;
+    }
+    .btn:focus-visible { border-color: var(--ring); box-shadow: 0 0 0 2px color-mix(in oklch, var(--ring) 30%, transparent); }
+    .btn:active:not(:disabled) { transform: translateY(1px); }
+    .btn:disabled { pointer-events: none; opacity: 0.5; }
+    .btn svg { flex-shrink: 0; pointer-events: none; }
+
+    .btn--default { color: var(--primary-foreground); background: var(--primary); }
+    .btn--default:hover { background: oklch(0.25 0 0); }
+    .btn--outline { color: var(--foreground); background: transparent; border-color: var(--border); }
+    .btn--outline:hover { background: var(--muted); }
+    .btn--secondary { color: var(--secondary-foreground); background: var(--secondary); }
+    .btn--secondary:hover { background: color-mix(in oklch, var(--secondary) 80%, transparent); }
+    .btn--ghost { color: var(--foreground); background: transparent; }
+    .btn--ghost:hover { background: var(--muted); }
+    .btn--destructive { color: var(--destructive); background: color-mix(in oklch, var(--destructive) 10%, transparent); }
+    .btn--destructive:hover { background: color-mix(in oklch, var(--destructive) 20%, transparent); }
+    .btn--link { color: var(--primary); text-underline-offset: 4px; background: transparent; }
+    .btn--link:hover { text-decoration: underline; }
+
+    .btn--xs  { height: 1.25rem; padding: 0 0.5rem;  font-size: 0.625rem; border-radius: var(--radius-sm); }
+    .btn--xs svg { width: 0.625rem; height: 0.625rem; }
+    .btn--sm  { height: 1.5rem;  padding: 0 0.5rem;  font-size: 0.75rem; }
+    .btn--sm svg { width: 0.75rem; height: 0.75rem; }
+    .btn--md  { height: 1.75rem; padding: 0 0.5rem;  font-size: 0.75rem; }
+    .btn--md svg { width: 0.875rem; height: 0.875rem; }
+    .btn--lg  { height: 2rem;   padding: 0 0.625rem; font-size: 0.75rem; }
+    .btn--lg svg { width: 1rem; height: 1rem; }
+    .btn--xl  { height: 2rem;   padding: 0 0.75rem;  font-size: 0.875rem; }
+    .btn--xl svg { width: 1.125rem; height: 1.125rem; }
+    .btn--icon { width: 1.75rem; height: 1.75rem; padding: 0; }
+    .btn--icon svg { width: 0.875rem; height: 0.875rem; }
+    .btn--icon-xs { width: 1.25rem; height: 1.25rem; padding: 0; border-radius: var(--radius-sm); }
+    .btn--icon-xs svg { width: 0.625rem; height: 0.625rem; }
+    .btn--icon-sm { width: 1.5rem; height: 1.5rem; padding: 0; }
+    .btn--icon-sm svg { width: 0.75rem; height: 0.75rem; }
+    .btn--icon-lg { width: 2rem; height: 2rem; padding: 0; }
+    .btn--icon-lg svg { width: 1rem; height: 1rem; }
+    .btn-matrix { display: flex; flex-direction: column; gap: 1.25rem; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+    .btn-row__label { min-width: 80px; font-family: ui-monospace, monospace; font-size: 0.6875rem; color: var(--muted-foreground); }
+    .spinner { width: 0.875rem; height: 0.875rem; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: spin 0.6s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── Badges ── */
+    .badge {
+      display: inline-flex; gap: 0.25rem; align-items: center; justify-content: center;
+      width: fit-content; height: 1.25rem; padding: 0.125rem 0.5rem;
+      font-size: 0.625rem; font-weight: 500; white-space: nowrap;
+      border: 1px solid transparent; border-radius: 9999px; transition: all 0.15s;
+    }
+    .badge svg { flex-shrink: 0; width: 0.625rem; height: 0.625rem; }
+    .badge--default    { color: var(--primary-foreground); background: var(--primary); }
+    .badge--secondary  { color: var(--secondary-foreground); background: var(--secondary); border-color: var(--border); }
+    .badge--destructive{ color: var(--destructive); background: color-mix(in oklch, var(--destructive) 10%, transparent); }
+    .badge--outline    { color: var(--foreground); background: transparent; border-color: var(--border); }
+    .badge--ghost      { color: var(--foreground); background: transparent; }
+    .badge--link       { color: var(--primary); background: transparent; }
+    .badge--success    { color: white; background: oklch(0.45 0.15 150); }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+
+    /* ── Components ── */
+    .component-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .card {
+      display: flex; flex-direction: column; gap: 0.75rem;
+      padding: 0.75rem 0; overflow: hidden;
+      font-size: 0.75rem; line-height: 1.625;
+      color: var(--card-foreground); background: var(--card);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 0 0 1px color-mix(in oklch, var(--foreground) 10%, transparent);
+    }
+    .card__header { padding: 0 0.75rem; }
+    .card__title { font-size: 0.875rem; font-weight: 500; }
+    .card__description { margin-top: 0.125rem; font-size: 0.75rem; color: var(--muted-foreground); }
+    .card__content { padding: 0 0.75rem; }
+    .card__footer { display: flex; gap: 0.5rem; align-items: center; padding: 0 0.75rem; }
+
+    .alert {
+      display: grid; gap: 0.125rem; width: 100%;
+      padding: 0.375rem 0.5rem; font-size: 0.75rem; line-height: 1.625;
+      text-align: left; border: 1px solid var(--border); border-radius: var(--radius-lg);
+    }
+    .alert--default { color: var(--card-foreground); background: var(--card); }
+    .alert--destructive { color: var(--destructive); background: var(--card); }
+    .alert__title { font-size: 0.75rem; font-weight: 500; }
+    .alert__description { font-size: 0.75rem; color: var(--muted-foreground); }
+    .alert--destructive .alert__description { color: color-mix(in oklch, var(--destructive) 90%, transparent); }
+
+    .input {
+      display: block; width: 100%; height: 2rem; padding: 0.125rem 0.5rem;
+      font-family: var(--font-sans); font-size: 0.875rem;
+      color: var(--foreground); outline: none;
+      background: color-mix(in oklch, var(--input) 20%, transparent);
+      border: 1px solid var(--input); border-radius: var(--radius-md);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .input::placeholder { color: var(--muted-foreground); }
+    .input:focus { border-color: var(--ring); box-shadow: 0 0 0 2px color-mix(in oklch, var(--ring) 30%, transparent); }
+    .input:disabled { pointer-events: none; cursor: not-allowed; opacity: 0.5; }
+
+    .field { display: flex; flex-direction: column; gap: 0.375rem; }
+    .field__label { font-size: 0.75rem; font-weight: 500; }
+    .field__hint { font-size: 0.6875rem; color: var(--muted-foreground); }
+
+    /* Product card */
+    .product-card {
+      display: flex; flex-direction: column; gap: 0.5rem;
+      max-width: 220px; padding: 0.5rem; color: inherit; text-decoration: none;
+      background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+    }
+    .product-card__image-wrap { position: relative; }
+    .product-card__image { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--muted); }
+    .product-card__badge-discount { position: absolute; top: 0; left: 0; }
+    .product-card__badges-bottom { position: absolute; right: 0; bottom: 0; left: 0; display: flex; flex-wrap: wrap; gap: 0.25rem; }
+    .product-card__name { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; -webkit-line-clamp: 2; font-size: 0.75rem; font-weight: 500; line-height: 1.4; }
+    .product-card__footer { display: flex; flex-direction: column; gap: 0.25rem; margin-top: auto; }
+    .product-card__prices { display: flex; flex-direction: column; gap: 0.25rem; align-items: flex-start; }
+    .product-card__actions { display: flex; gap: 0.5rem; align-items: flex-end; justify-content: space-between; }
+
+    .doc-footer {
+      padding-top: 1.5rem; margin-top: 4rem;
+      font-size: 0.6875rem; color: var(--muted-foreground);
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 768px) {
+      .doc-layout { grid-template-columns: 1fr; }
+      .doc-sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
+      .doc-nav { flex-direction: row; flex-wrap: wrap; }
+      .doc-main { padding: 1.5rem 1rem 3rem; }
+    }
+    @media print {
+      .doc-sidebar { display: none; }
+      .doc-layout { grid-template-columns: 1fr; }
+      .doc-main { max-width: 100%; padding: 1rem; }
+      section { break-inside: avoid; }
+    }
+    </style>
+  </head>
+  <body>
+    <div class="doc-layout">
+      <aside class="doc-sidebar">
+        <div class="doc-sidebar__brand">RHEON</div>
+        <div class="doc-sidebar__subtitle">Design System — referência visual</div>
+        <nav>
+          <ul class="doc-nav">
+            <li><a href="#intro">Introdução</a></li>
+            <li><a href="#colors">Cores</a></li>
+            <li><a href="#typography">Tipografia</a></li>
+            <li><a href="#radius-spacing">Raios &amp; Espaçamento</a></li>
+            <li><a href="#buttons">Botões</a></li>
+            <li><a href="#badges">Badges</a></li>
+            <li><a href="#components">Componentes</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="doc-main">
+        <header class="doc-hero" id="intro">
+          <h1>Design System</h1>
+          <p>
+            Referência de identidade visual da <strong>Rheon</strong>. Paleta preto e branco, tipografia Inter (substituta de Rumiko para uso web), interface densa e tokens semânticos em OKLCH. Construído sobre a mesma arquitetura white-label do projeto base.
+          </p>
+          <div class="doc-note">
+            <strong>White-label:</strong> cada tenant pode sobrescrever cores, raios e tokens via API de layouts. Este documento exibe o <strong>tema base Rheon</strong> definido em <code>src/styles.css</code>.
+          </div>
+        </header>
+
+        <!-- CORES -->
+        <section id="colors">
+          <h2 class="section-title">Cores</h2>
+          <p class="section-desc">
+            Tokens semânticos em OKLCH. A Rheon opera sobre paleta preto e branco — preto para força e impacto, branco para equilíbrio e respiro visual. Use sempre os nomes semânticos em vez de valores fixos.
+          </p>
+
+          <h3 class="subsection-title">Superfícies &amp; texto</h3>
+          <div class="color-grid">
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--background); border-bottom: 1px solid var(--border);"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Background</div>
+                <div class="color-swatch__token">--background</div>
+                <div class="color-swatch__value">oklch(1 0 0) — #ffffff</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--foreground)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Foreground</div>
+                <div class="color-swatch__token">--foreground</div>
+                <div class="color-swatch__value">oklch(0.1 0 0) — #111111</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--card); border-bottom: 1px solid var(--border);"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Card</div>
+                <div class="color-swatch__token">--card</div>
+                <div class="color-swatch__value">oklch(1 0 0) — #ffffff</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--muted)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Muted</div>
+                <div class="color-swatch__token">--muted</div>
+                <div class="color-swatch__value">oklch(0.96 0 0) — #f5f5f5</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--sidebar)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Sidebar</div>
+                <div class="color-swatch__token">--sidebar</div>
+                <div class="color-swatch__value">oklch(0.985 0 0) — #fafafa</div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Ação &amp; destaque</h3>
+          <div class="color-grid">
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--primary)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Primary</div>
+                <div class="color-swatch__token">--primary</div>
+                <div class="color-swatch__value">oklch(0.1 0 0) — #000000</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--primary-foreground); border-bottom: 1px solid var(--border);"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Primary Foreground</div>
+                <div class="color-swatch__token">--primary-foreground</div>
+                <div class="color-swatch__value">oklch(1 0 0) — #ffffff</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--secondary)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Secondary</div>
+                <div class="color-swatch__token">--secondary</div>
+                <div class="color-swatch__value">oklch(0.96 0 0) — #f5f5f5</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--accent)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Accent</div>
+                <div class="color-swatch__token">--accent</div>
+                <div class="color-swatch__value">oklch(0.96 0 0) — #f5f5f5</div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Neutros &amp; feedback</h3>
+          <div class="color-grid">
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--muted-foreground)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Muted Foreground</div>
+                <div class="color-swatch__token">--muted-foreground</div>
+                <div class="color-swatch__value">oklch(0.45 0 0) — #6b6b6b</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--destructive)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Destructive</div>
+                <div class="color-swatch__token">--destructive</div>
+                <div class="color-swatch__value">oklch(0.577 0.245 27.325)</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--border)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Border / Input</div>
+                <div class="color-swatch__token">--border, --input</div>
+                <div class="color-swatch__value">oklch(0.88 0 0) — #e0e0e0</div>
+              </div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--ring)"></div>
+              <div class="color-swatch__info">
+                <div class="color-swatch__name">Ring (focus)</div>
+                <div class="color-swatch__token">--ring</div>
+                <div class="color-swatch__value">oklch(0.5 0 0) — #808080</div>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Charts</h3>
+          <div class="color-grid">
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--chart-1)"></div>
+              <div class="color-swatch__info"><div class="color-swatch__name">Chart 1</div><div class="color-swatch__token">--chart-1</div><div class="color-swatch__value">oklch(0.2 0 0)</div></div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--chart-2)"></div>
+              <div class="color-swatch__info"><div class="color-swatch__name">Chart 2</div><div class="color-swatch__token">--chart-2</div><div class="color-swatch__value">oklch(0.35 0 0)</div></div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--chart-3)"></div>
+              <div class="color-swatch__info"><div class="color-swatch__name">Chart 3</div><div class="color-swatch__token">--chart-3</div><div class="color-swatch__value">oklch(0.5 0 0)</div></div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--chart-4)"></div>
+              <div class="color-swatch__info"><div class="color-swatch__name">Chart 4</div><div class="color-swatch__token">--chart-4</div><div class="color-swatch__value">oklch(0.65 0 0)</div></div>
+            </div>
+            <div class="color-swatch">
+              <div class="color-swatch__preview" style="background: var(--chart-5)"></div>
+              <div class="color-swatch__info"><div class="color-swatch__name">Chart 5</div><div class="color-swatch__token">--chart-5</div><div class="color-swatch__value">oklch(0.8 0 0)</div></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TIPOGRAFIA -->
+        <section id="typography">
+          <h2 class="section-title">Tipografia</h2>
+          <p class="section-desc">
+            Família base: <strong>Inter</strong> (substituta web de Rumiko). Pesos disponíveis: 400 Regular, 500 Medium, 700 Bold. Escalas em rem para consistência entre densidades.
+          </p>
+
+          <h3 class="subsection-title">Escala</h3>
+          <div class="type-sample">
+            <div class="type-sample__meta">type-xl · 1.25rem / 1.4 · weight 700</div>
+            <div class="type-xl weight-bold">Força, solidez e inovação.</div>
+          </div>
+          <div class="type-sample">
+            <div class="type-sample__meta">type-lg · 1rem / 1.625 · weight 500</div>
+            <div class="type-lg weight-medium">Movimento contínuo, transformação e impacto.</div>
+          </div>
+          <div class="type-sample">
+            <div class="type-sample__meta">type-base · 0.875rem / 1.625 · weight 400</div>
+            <div class="type-base">Identidade que não busca atenção pelo excesso, mas pelo posicionamento firme e pela clareza.</div>
+          </div>
+          <div class="type-sample">
+            <div class="type-sample__meta">type-sm · 0.75rem / 1.625 · weight 400</div>
+            <div class="type-sm">Evoluir com propósito, impactar com inteligência e construir valor ao longo do tempo.</div>
+          </div>
+          <div class="type-sample">
+            <div class="type-sample__meta">type-xs · 0.625rem / 1.625 · weight 400</div>
+            <div class="type-xs">Uso em labels, hints e metadados de interface.</div>
+          </div>
+
+          <h3 class="subsection-title">Pesos</h3>
+          <div class="type-sample">
+            <div class="type-sample__meta">font-weight: 400 — Regular</div>
+            <div class="type-base">Rheon Design System — texto corrido e descrições</div>
+          </div>
+          <div class="type-sample">
+            <div class="type-sample__meta">font-weight: 500 — Medium</div>
+            <div class="type-base weight-medium">Rheon Design System — labels e subtítulos</div>
+          </div>
+          <div class="type-sample">
+            <div class="type-sample__meta">font-weight: 700 — Bold</div>
+            <div class="type-base weight-bold">Rheon Design System — títulos e destaques</div>
+          </div>
+
+          <h3 class="subsection-title">Preços</h3>
+          <div class="type-sample">
+            <div class="type-sample__meta">type-price-old + type-price</div>
+            <span class="type-price-old">R$ 32,90</span><br>
+            <span class="type-price">R$ 24,90</span>
+          </div>
+        </section>
+
+        <!-- RAIOS E ESPAÇAMENTO -->
+        <section id="radius-spacing">
+          <h2 class="section-title">Raios &amp; Espaçamento</h2>
+          <p class="section-desc">
+            Base: <code>--radius: 0.5rem</code>. Escalas derivadas garantem consistência. A Rheon usa raios menores que o tema base original, reforçando solidez e estrutura.
+          </p>
+
+          <h3 class="subsection-title">Border radius</h3>
+          <div class="radius-grid">
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: var(--radius-sm)"></div>
+              <div class="radius-label">--radius-sm<br>0.3rem</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: var(--radius-md)"></div>
+              <div class="radius-label">--radius-md<br>0.4rem</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: var(--radius-lg)"></div>
+              <div class="radius-label">--radius-lg<br>0.5rem</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: var(--radius-xl)"></div>
+              <div class="radius-label">--radius-xl<br>0.7rem</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: var(--radius-2xl)"></div>
+              <div class="radius-label">--radius-2xl<br>0.9rem</div>
+            </div>
+            <div class="radius-item">
+              <div class="radius-box" style="border-radius: 9999px"></div>
+              <div class="radius-label">9999px<br>pill / badge</div>
+            </div>
+          </div>
+
+          <h3 class="subsection-title">Espaçamento</h3>
+          <div class="spacing-grid">
+            <div class="spacing-row"><div class="spacing-bar" style="width: 0.25rem"></div><div class="spacing-label">1 · 0.25rem (4px)</div></div>
+            <div class="spacing-row"><div class="spacing-bar" style="width: 0.5rem"></div><div class="spacing-label">2 · 0.5rem (8px)</div></div>
+            <div class="spacing-row"><div class="spacing-bar" style="width: 0.75rem"></div><div class="spacing-label">3 · 0.75rem (12px)</div></div>
+            <div class="spacing-row"><div class="spacing-bar" style="width: 1rem"></div><div class="spacing-label">4 · 1rem (16px)</div></div>
+            <div class="spacing-row"><div class="spacing-bar" style="width: 1.5rem"></div><div class="spacing-label">6 · 1.5rem (24px)</div></div>
+            <div class="spacing-row"><div class="spacing-bar" style="width: 2rem"></div><div class="spacing-label">8 · 2rem (32px)</div></div>
+            <div class="spacing-row"><div class="spacing-bar" style="width: 2.5rem"></div><div class="spacing-label">10 · 2.5rem (40px)</div></div>
+            <div class="spacing-row"><div class="spacing-bar" style="width: 3rem"></div><div class="spacing-label">12 · 3rem (48px)</div></div>
+          </div>
+        </section>
+
+        <!-- BOTÕES -->
+        <section id="buttons">
+          <h2 class="section-title">Botões</h2>
+          <p class="section-desc">
+            Elemento base <code>.btn</code> com variantes de cor e tamanho. Variante <code>btn--default</code> usa preto puro — cor primária Rheon. Transição suave em 0.15s; active com translateY(1px).
+          </p>
+
+          <div class="btn-matrix">
+            <div class="btn-row">
+              <span class="btn-row__label">Variantes</span>
+              <button class="btn btn--default btn--lg">Default</button>
+              <button class="btn btn--outline btn--lg">Outline</button>
+              <button class="btn btn--secondary btn--lg">Secondary</button>
+              <button class="btn btn--ghost btn--lg">Ghost</button>
+              <button class="btn btn--destructive btn--lg">Destructive</button>
+              <button class="btn btn--link btn--lg">Link</button>
+            </div>
+            <div class="btn-row">
+              <span class="btn-row__label">Tamanhos</span>
+              <button class="btn btn--default btn--xs">XS</button>
+              <button class="btn btn--default btn--sm">SM</button>
+              <button class="btn btn--default btn--md">MD</button>
+              <button class="btn btn--default btn--lg">LG</button>
+              <button class="btn btn--default btn--xl">XL</button>
+            </div>
+            <div class="btn-row">
+              <span class="btn-row__label">Ícone</span>
+              <button class="btn btn--default btn--icon" aria-label="Adicionar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+              </button>
+              <button class="btn btn--outline btn--icon" aria-label="Buscar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+              </button>
+              <button class="btn btn--ghost btn--icon" aria-label="Menu">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div class="btn-row">
+              <span class="btn-row__label">Loading</span>
+              <button class="btn btn--default btn--lg" disabled>
+                <span class="spinner"></span>
+                Carregando
+              </button>
+              <button class="btn btn--outline btn--lg" disabled>Desabilitado</button>
+            </div>
+            <div class="btn-row">
+              <span class="btn-row__label">Com ícone</span>
+              <button class="btn btn--default btn--lg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                Comprar
+              </button>
+              <button class="btn btn--outline btn--lg">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:1rem;height:1rem"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Salvar
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- BADGES -->
+        <section id="badges">
+          <h2 class="section-title">Badges</h2>
+          <p class="section-desc">
+            Pílula arredondada (rounded-full), altura 1.25rem, texto 0.625rem, font-medium. Usados para tags, status e indicadores de desconto.
+          </p>
+
+          <div class="badge-row">
+            <span class="badge badge--default">Default</span>
+            <span class="badge badge--secondary">Secondary</span>
+            <span class="badge badge--destructive">Destructive</span>
+            <span class="badge badge--outline">Outline</span>
+            <span class="badge badge--ghost">Ghost</span>
+            <span class="badge badge--link">Link</span>
+            <span class="badge badge--success">Success</span>
+          </div>
+
+          <h3 class="subsection-title">Com ícones</h3>
+          <div class="badge-row">
+            <span class="badge badge--success">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+              15%
+            </span>
+            <span class="badge badge--default">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Desc. de laboratório
+            </span>
+            <span class="badge badge--outline">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/></svg>
+              Retenção de receita
+            </span>
+            <span class="badge badge--secondary">Novo</span>
+            <span class="badge badge--destructive">Indisponível</span>
+          </div>
+        </section>
+
+        <!-- COMPONENTES -->
+        <section id="components">
+          <h2 class="section-title">Componentes</h2>
+          <p class="section-desc">
+            Exemplos de componentes reais do projeto com tokens Rheon aplicados em contexto.
+          </p>
+
+          <div class="component-grid">
+            <!-- Product card -->
+            <div>
+              <h3 class="subsection-title">Product Card</h3>
+              <a class="product-card" href="#">
+                <div class="product-card__image-wrap">
+                  <span class="badge badge--success product-card__badge-discount">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="m19 12-7 7-7-7"/></svg>
+                    15%
+                  </span>
+                  <div class="product-card__image" role="img" aria-label="Imagem do produto"></div>
+                  <div class="product-card__badges-bottom">
+                    <span class="badge badge--default">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                      Desc. laboratório
+                    </span>
+                  </div>
+                </div>
+                <p class="product-card__name">Losartana Potássica 50mg — 30 comprimidos</p>
+                <div class="product-card__footer">
+                  <div class="product-card__actions">
+                    <div class="product-card__prices">
+                      <span class="type-price-old">R$ 32,90</span>
+                      <span class="type-price">R$ 24,90</span>
+                    </div>
+                    <button type="button" class="btn btn--default btn--icon" aria-label="Comprar">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+                    </button>
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            <!-- Card -->
+            <div>
+              <h3 class="subsection-title">Card</h3>
+              <div class="card">
+                <div class="card__header">
+                  <div class="card__title">Entrega expressa</div>
+                  <div class="card__description">Receba em até 2 horas na sua região.</div>
+                </div>
+                <div class="card__content">
+                  <p style="color: var(--muted-foreground)">Consulte disponibilidade pelo CEP no checkout.</p>
+                </div>
+                <div class="card__footer">
+                  <button type="button" class="btn btn--default btn--sm">Saiba mais</button>
+                  <button type="button" class="btn btn--outline btn--sm">Fechar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Alert -->
+            <div>
+              <h3 class="subsection-title">Alert</h3>
+              <div class="alert alert--default" style="margin-bottom: 0.75rem">
+                <div class="alert__title">Pedido confirmado</div>
+                <div class="alert__description">Você receberá atualizações por e-mail e SMS.</div>
+              </div>
+              <div class="alert alert--destructive">
+                <div class="alert__title">Erro no pagamento</div>
+                <div class="alert__description">Verifique os dados do cartão e tente novamente.</div>
+              </div>
+            </div>
+
+            <!-- Input / Field -->
+            <div>
+              <h3 class="subsection-title">Input / Field</h3>
+              <div class="field">
+                <label class="field__label" for="cep-input">CEP</label>
+                <input class="input" id="cep-input" type="text" placeholder="00000-000">
+                <span class="field__hint">Informe o CEP para calcular o frete.</span>
+              </div>
+              <div class="field" style="margin-top: 1rem">
+                <label class="field__label" for="cpf-disabled">CPF (desabilitado)</label>
+                <input class="input" id="cpf-disabled" type="text" value="000.000.000-00" disabled>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="doc-footer">
+          Rheon Design System — gerado a partir do código-fonte do projeto. Tema base de referência; cada tenant pode customizar via API de layouts.
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>

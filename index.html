@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RHEON — Recursos para Agências</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+      :root {
+        --background: oklch(100% 0 0);
+        --foreground: oklch(14.5% 0 0);
+        --primary: oklch(20.5% 0 0);
+        --primary-foreground: oklch(98.5% 0 0);
+        --muted-foreground: oklch(55.6% 0 0);
+        --border: oklch(92.2% 0 0);
+        --radius: 0.625rem;
+        --font-sans: "Inter", system-ui, sans-serif;
+      }
+      *, *::before, *::after { box-sizing: border-box; padding: 0; margin: 0; }
+      html { scroll-behavior: smooth; font-family: var(--font-sans); }
+      body {
+        display: flex; flex-direction: column; min-height: 100vh;
+        font-family: var(--font-sans);
+        font-size: 0.875rem; line-height: 1.625;
+        color: var(--foreground);
+        background: var(--background);
+      }
+      a { color: inherit; text-decoration: none; }
+
+      .header {
+        position: sticky; top: 0; z-index: 50;
+        padding: 1rem 2rem;
+        border-bottom: 1px solid var(--border);
+        background: var(--background);
+      }
+      .header__inner {
+        display: flex; align-items: center; justify-content: space-between;
+        max-width: 1100px; margin: 0 auto;
+      }
+      .header__brand {
+        font-size: 1.125rem; font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+
+      .main {
+        flex: 1;
+        display: flex; flex-direction: column;
+        max-width: 1100px; width: 100%;
+        margin: 0 auto; padding: 4rem 2rem;
+      }
+
+      .hero {
+        display: flex; flex-direction: column; gap: 1.5rem;
+        padding-bottom: 3rem;
+        margin-bottom: 3rem;
+        border-bottom: 1px solid var(--border);
+      }
+      .hero__tag {
+        font-size: 0.75rem; font-weight: 500;
+        letter-spacing: 0.18em; text-transform: uppercase;
+        color: var(--muted-foreground);
+      }
+      .hero h1 {
+        max-width: 32rem;
+        font-size: 2.5rem; font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.15;
+      }
+      .hero p {
+        max-width: 36rem;
+        font-size: 0.9375rem;
+        color: var(--muted-foreground);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1rem;
+      }
+      .card {
+        display: flex; flex-direction: column; gap: 1rem;
+        padding: 1.5rem;
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        transition: border-color 0.15s;
+      }
+      .card:hover { border-color: var(--primary); }
+      .card__icon {
+        width: 2rem; height: 2rem;
+        display: flex; align-items: center; justify-content: center;
+        border-radius: calc(var(--radius) * 0.6);
+        background: var(--primary);
+        color: var(--primary-foreground);
+      }
+      .card__icon svg { width: 1rem; height: 1rem; }
+      .card__title {
+        font-size: 1rem; font-weight: 600;
+        letter-spacing: -0.01em;
+      }
+      .card__desc {
+        font-size: 0.8125rem;
+        color: var(--muted-foreground);
+        line-height: 1.6;
+      }
+      .card__action {
+        display: inline-flex; align-items: center; gap: 0.375rem;
+        margin-top: auto;
+        font-size: 0.75rem; font-weight: 500;
+        color: var(--primary);
+      }
+      .card__action svg {
+        width: 0.875rem; height: 0.875rem;
+        transition: transform 0.15s;
+      }
+      .card:hover .card__action svg { transform: translateX(2px); }
+
+      .footer {
+        padding: 1.5rem 2rem;
+        border-top: 1px solid var(--border);
+        font-size: 0.6875rem;
+        color: var(--muted-foreground);
+        text-align: center;
+      }
+
+      @media (max-width: 640px) {
+        .main { padding: 2rem 1rem; }
+        .hero h1 { font-size: 1.75rem; }
+        .header { padding: 0.75rem 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__inner">
+        <span class="header__brand">RHEON</span>
+        <span style="font-size:0.75rem;color:var(--muted-foreground);letter-spacing:0.04em">Recursos para Agências</span>
+      </div>
+    </header>
+
+    <main class="main">
+      <section class="hero">
+        <span class="hero__tag">Repositório de Recursos</span>
+        <h1>Base de implementação<br>para a plataforma RHEON</h1>
+        <p>
+          Materiais de referência, diretrizes visuais e componentes para agências
+          parceiras utilizarem como base na implementação do ecossistema de ecommerce
+          da RHEON — Farma, Beleza e Pet.
+        </p>
+      </section>
+
+      <div class="grid">
+        <a href="design-system.html" target="_blank" class="card">
+          <div class="card__icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          </div>
+          <span class="card__title">Design System</span>
+          <p class="card__desc">
+            Referência completa de identidade visual: cores, tipografia, raios,
+            botões, badges e componentes com tokens semânticos em OKLCH.
+          </p>
+          <span class="card__action">
+            Abrir Design System
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 7h10v10"/><path d="M7 17 21 3"/></svg>
+          </span>
+        </a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      RHEON — Repositório de Recursos para Agências
+    </footer>
+  </body>
+</html>
