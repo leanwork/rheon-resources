@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guia da Agência — Lean Marketplace Farma</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap"
-      rel="stylesheet"
-    >
-    <style>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Guia da Agência — Lean Marketplace Farma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
     :root {
       --primary: #000000;
       --primary-dark: #111111;
@@ -89,7 +87,7 @@
       font-size: 11rem;
       font-weight: 700;
       letter-spacing: -0.04em;
-      color: rgba(255,255,255,0.04);
+      color: rgba(255, 255, 255, 0.04);
       line-height: 1;
       pointer-events: none;
       user-select: none;
@@ -132,7 +130,7 @@
       background: transparent;
       border: 1px solid rgba(255, 255, 255, 0.28);
       border-radius: 2px;
-      color: rgba(255,255,255,0.75);
+      color: rgba(255, 255, 255, 0.75);
       font-size: 0.8rem;
       font-weight: 500;
       letter-spacing: 0.08em;
@@ -141,7 +139,7 @@
     }
 
     .quick-nav a:hover {
-      background: rgba(255,255,255,0.08);
+      background: rgba(255, 255, 255, 0.08);
       text-decoration: none;
     }
 
@@ -312,7 +310,7 @@
       padding: 15px 18px;
     }
 
-    .row + .row {
+    .row+.row {
       border-top: 1px solid var(--gray-300);
     }
 
@@ -345,6 +343,382 @@
       text-transform: uppercase;
     }
 
+    /* ── Showcase component cards ── */
+    .comp-grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+
+    .comp-card {
+      background: #fff;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      overflow: hidden;
+    }
+
+    .comp-header {
+      align-items: flex-start;
+      display: flex;
+      gap: 10px;
+      justify-content: space-between;
+      padding: 16px 18px 12px;
+    }
+
+    .comp-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin: 0;
+    }
+
+    .comp-tipo {
+      background: #000;
+      border-radius: 2px;
+      color: #fff;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      padding: 3px 7px;
+      white-space: nowrap;
+    }
+
+    .comp-mock {
+      background: var(--gray-100);
+      border-bottom: 1px solid var(--gray-300);
+      border-top: 1px solid var(--gray-300);
+      margin: 0;
+      padding: 14px 18px;
+    }
+
+    .comp-body {
+      padding: 12px 18px 16px;
+    }
+
+    .comp-body p {
+      color: var(--gray-900);
+      font-size: 0.88rem;
+      font-weight: 300;
+      line-height: 1.5;
+      margin: 0 0 10px;
+    }
+
+    .comp-body ul {
+      font-size: 0.85rem;
+      margin: 0;
+      padding-left: 16px;
+    }
+
+    .comp-body li {
+      color: var(--gray-900);
+      margin: 4px 0;
+    }
+
+    .comp-note {
+      background: var(--gray-100);
+      border-left: 3px solid #000;
+      font-size: 0.8rem;
+      font-weight: 400;
+      margin: 8px 0 0;
+      padding: 8px 10px;
+    }
+
+    /* CSS wireframe primitives */
+    .mock-banner {
+      background: #000;
+      border-radius: 2px;
+      height: 80px;
+      opacity: 0.12;
+      position: relative;
+      width: 100%;
+    }
+
+    .mock-banner-slide {
+      bottom: 8px;
+      display: flex;
+      gap: 4px;
+      justify-content: center;
+      position: absolute;
+      width: 100%;
+    }
+
+    .mock-dot {
+      background: #fff;
+      border-radius: 50%;
+      height: 6px;
+      opacity: 0.8;
+      width: 6px;
+    }
+
+    .mock-dot.active {
+      background: #000;
+      opacity: 1;
+      width: 16px;
+    }
+
+    .mock-banner-real {
+      align-items: center;
+      background: #000;
+      border-radius: 2px;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      font-size: 0.72rem;
+      height: 82px;
+      justify-content: center;
+      letter-spacing: 0.06em;
+      opacity: 0.85;
+      text-transform: uppercase;
+      width: 100%;
+    }
+
+    .mock-grid-banners {
+      display: grid;
+      gap: 6px;
+    }
+
+    .mock-grid-banners.cols-2 {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .mock-grid-banners.cols-3 {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .mock-banner-cell {
+      background: #000;
+      border-radius: 2px;
+      height: 60px;
+      opacity: 0.1;
+    }
+
+    .mock-products {
+      display: flex;
+      gap: 6px;
+      overflow: hidden;
+    }
+
+    .mock-product-card {
+      border: 1px solid var(--gray-300);
+      border-radius: 2px;
+      flex: 0 0 72px;
+    }
+
+    .mock-product-img {
+      background: var(--gray-300);
+      height: 52px;
+    }
+
+    .mock-product-info {
+      padding: 5px 5px 6px;
+    }
+
+    .mock-product-line {
+      background: var(--gray-300);
+      border-radius: 1px;
+      height: 5px;
+      margin-bottom: 3px;
+    }
+
+    .mock-product-line.short {
+      width: 55%;
+    }
+
+    .mock-product-line.price {
+      background: #000;
+      opacity: 0.18;
+      width: 65%;
+    }
+
+    .mock-brands {
+      display: flex;
+      gap: 6px;
+      overflow: hidden;
+    }
+
+    .mock-brand {
+      align-items: center;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 2px;
+      display: flex;
+      flex: 0 0 60px;
+      height: 40px;
+      justify-content: center;
+    }
+
+    .mock-brand-dot {
+      background: var(--gray-300);
+      border-radius: 50%;
+      height: 18px;
+      width: 18px;
+    }
+
+    .mock-html {
+      border: 1px dashed var(--gray-300);
+      border-radius: 2px;
+      padding: 10px 12px;
+    }
+
+    .mock-html-line {
+      background: var(--gray-300);
+      border-radius: 1px;
+      height: 6px;
+      margin-bottom: 5px;
+    }
+
+    .mock-bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mock-bullet-item {
+      align-items: center;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 2px;
+      display: flex;
+      gap: 8px;
+      padding: 7px 10px;
+    }
+
+    .mock-bullet-icon {
+      background: #000;
+      border-radius: 50%;
+      flex-shrink: 0;
+      height: 20px;
+      opacity: 0.12;
+      width: 20px;
+    }
+
+    .mock-bullet-text {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .mock-bullet-line {
+      background: var(--gray-300);
+      border-radius: 1px;
+      height: 5px;
+    }
+
+    .mock-bullet-line.short {
+      width: 60%;
+    }
+
+    .mock-resources {
+      display: flex;
+      gap: 8px;
+    }
+
+    .mock-resource {
+      align-items: center;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 2px;
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      gap: 5px;
+      padding: 8px;
+    }
+
+    .mock-resource-icon {
+      background: #000;
+      border-radius: 50%;
+      height: 22px;
+      opacity: 0.1;
+      width: 22px;
+    }
+
+    .mock-resource-line {
+      background: var(--gray-300);
+      border-radius: 1px;
+      height: 4px;
+      width: 70%;
+    }
+
+    .mock-coupons {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mock-coupon {
+      border: 2px dashed var(--gray-300);
+      border-radius: 2px;
+      flex: 1;
+      padding: 8px 10px;
+    }
+
+    .mock-coupon-code {
+      background: #000;
+      border-radius: 2px;
+      height: 14px;
+      margin-bottom: 5px;
+      opacity: 0.14;
+    }
+
+    .mock-coupon-line {
+      background: var(--gray-300);
+      border-radius: 1px;
+      height: 4px;
+      margin-bottom: 3px;
+    }
+
+    .mock-banner-products {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mock-bp-banner {
+      background: #000;
+      border-radius: 2px;
+      flex: 0 0 38%;
+      height: 90px;
+      opacity: 0.1;
+    }
+
+    .mock-bp-products {
+      display: flex;
+      flex: 1;
+      gap: 4px;
+    }
+
+    .mock-thumbs {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .mock-thumbs-row {
+      display: flex;
+      gap: 6px;
+    }
+
+    .mock-thumb {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 2px;
+      flex: 1;
+      height: 38px;
+    }
+
+    .mock-section-title {
+      background: #000;
+      border-radius: 1px;
+      height: 9px;
+      margin: 0 auto 10px;
+      opacity: 0.1;
+      width: 38%;
+    }
+
     @media (max-width: 760px) {
       .hero {
         padding: 30px 22px;
@@ -358,559 +732,1185 @@
         display: none;
       }
     }
-    </style>
-  </head>
-  <body>
-    <main class="page">
-      <header class="hero">
-        <div style="font-size:1.3rem;font-weight:700;letter-spacing:0.18em;color:#fff;margin-bottom:28px;opacity:0.9;text-transform:uppercase;">RHEON</div>
-        <p class="eyebrow">Guia para agência</p>
-        <h1>O que pode ser alterado pelo Admin/API</h1>
-        <p>
-          Este documento resume apenas os pontos que a agência consegue ajustar
-          sem mexer no código: tema, identidade visual, banners, vitrines, SEO,
-          integrações, atendimento e configurações operacionais da loja.
-        </p>
-        <nav class="quick-nav" aria-label="Atalhos">
-          <a href="#visual">Visual</a>
-          <a href="#content">Conteúdo</a>
-          <a href="#integrations">Integrações</a>
-          <a href="#operations">Operação</a>
-          <a href="#matrix">Matriz</a>
-        </nav>
-      </header>
+  </style>
+</head>
 
-      <section id="project">
-        <h2>Informações úteis do projeto</h2>
-        <p class="section-intro">
-          A loja é multi-tenant. O storefront identifica o tenant pelo domínio,
-          busca as configurações nas APIs e renderiza a interface com esses
-          dados. A agência deve considerar o Admin/API como fonte de verdade.
-        </p>
-        <div class="grid">
-          <article class="card">
-            <span class="tag tag-note">Contexto</span>
-            <h3>Stack</h3>
-            <p>
-              Next.js 13 Pages Router, React 18, TypeScript, Tailwind CSS e APIs
-              Lean Commerce.
-            </p>
-          </article>
-          <article class="card">
-            <span class="tag tag-note">Fluxo</span>
-            <h3>Como a configuração chega na loja</h3>
-            <p>
-              <code>Host</code>define o tenant, o tenant define as APIs, e as
-              APIs retornam tema, menus, settings, vitrines e páginas.
-            </p>
-          </article>
-          <article class="card">
-            <span class="tag tag-note">Limite</span>
-            <h3>Sem alteração de código</h3>
-            <p>
-              O Admin altera conteúdo, cores e flags existentes. Novos layouts,
-              novas interações ou novos tipos de bloco exigem desenvolvimento.
-            </p>
-          </article>
-        </div>
-      </section>
-
-      <section id="visual">
-        <h2>Visual e identidade</h2>
-        <p class="section-intro">
-          Esses campos controlam a aparência principal da loja. Eles vêm de
-          <code>/api/v1/layouts/template</code>e
-          <code>/api/v1/configuracoes</code>.
-        </p>
-
-        <div class="swatches" aria-label="Cores configuráveis">
-          <div class="swatch">
-            <div class="swatch-color" style="background:#06847b"></div>
-            <div class="swatch-body">
-              <strong>Cor primária</strong>
-              <code>theme.primaryColor</code>
-            </div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background:#ffffff"></div>
-            <div class="swatch-body">
-              <strong>Cor do header</strong>
-              <code>theme.headerColor</code>
-            </div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background:#666666"></div>
-            <div class="swatch-body">
-              <strong>Texto do header</strong>
-              <code>theme.headerTextColor</code>
-            </div>
-          </div>
-          <div class="swatch">
-            <div class="swatch-color" style="background:#3e3e3e"></div>
-            <div class="swatch-body">
-              <strong>Título do footer</strong>
-              <code>theme.footerTitleColor</code>
-            </div>
-          </div>
-        </div>
-
-        <div class="grid" style="margin-top:16px">
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Branding</h3>
-            <ul>
-              <li>
-                Nome da loja: <code>storeSettings.loja.nome</code>
-              </li>
-              <li>
-                Logo do header: <code>storeSettings.loja.logo</code>
-              </li>
-              <li>
-                Logo do footer: <code>storeSettings.loja.logoFooter</code>
-              </li>
-              <li>
-                Favicon/ícone: <code>storeSettings.loja.icone</code>
-              </li>
-              <li>
-                Selo: <code>storeSettings.loja.selo.logo</code>e<code>url</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Templates visuais</h3>
-            <p>O template define o comportamento visual base da loja.</p>
-            <div class="template-preview" style="margin-top:12px">
-              <div class="shape modelo1"></div>
-              <div>
-                <strong>modelo1</strong>
-                <br>
-                Radius padrão de 6px
-              </div>
-            </div>
-            <div class="template-preview" style="margin-top:10px">
-              <div class="shape modelo2"></div>
-              <div>
-                <strong>modelo2</strong>
-                <br>
-                Estilo arredondado/pill
-              </div>
-            </div>
-            <div class="template-preview" style="margin-top:10px">
-              <div class="shape modelo3"></div>
-              <div>
-                <strong>modelo3</strong>
-                <br>
-                Header reorganizado e banner mais amplo
-              </div>
-            </div>
-            <span class="source"
-              >Campo: <code>theme.template</code></span
-            >
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Footer e contato</h3>
-            <ul>
-              <li>
-                HTML do footer: <code>/v1/layouts/footer</code>
-              </li>
-              <li>
-                Recursos visuais: <code>/v1/layouts/recursos</code>
-              </li>
-              <li>
-                SAC: <code>storeSettings.loja.sac</code>
-              </li>
-              <li>
-                Endereço: <code>storeSettings.loja.endereco</code>
-              </li>
-              <li>
-                Redes sociais: <code>storeSettings.redesSociais</code>
-              </li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="content">
-        <h2>Conteúdo, navegação e vitrines</h2>
-        <p class="section-intro">
-          A maior parte da experiência comercial da home e das páginas de
-          catálogo é configurável por API: menus, banners, blocos de vitrine,
-          hotsites e páginas CMS.
-        </p>
-
-        <div class="grid">
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Menus</h3>
-            <ul>
-              <li>
-                Endpoint: <code>/api/v1/menus</code>
-              </li>
-              <li>Nome, URL, tipo de URL, ordem, destaque, novo e filhos</li>
-              <li>
-                Mega menu: <code>storeSettings.geral.habilitarMegaMenu</code>
-              </li>
-              <li>
-                Ocultar categorias sem produto:
-                <code>ocultarCategoriasSemProdutos</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Banners</h3>
-            <ul>
-              <li>
-                Endpoint: <code>/v1/banners</code>
-              </li>
-              <li>Imagem desktop e imagem mobile</li>
-              <li>Link de destino, vigência e segmentações</li>
-              <li>Também podem vir dentro das vitrines da home</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Vitrines da home</h3>
-            <ul>
-              <li>
-                Endpoint: <code>/v1/vitrines/home</code>
-              </li>
-              <li>
-                Ordem dos blocos: <code>componentes[].ordem</code>
-              </li>
-              <li>
-                Tipos: <code>BANNER</code>, <code>PRODUTO</code>,
-                <code>MARCA</code>, <code>HTML</code>, <code>RECURSO</code>,
-                <code>BULLETS</code>, <code>CUPOM_DESCONTO</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Hotsites e campanhas</h3>
-            <ul>
-              <li>
-                Endpoint: <code>/v1/vitrines/hotsite/ { permalink}</code>
-              </li>
-              <li>Usado como campanha promocional configurável</li>
-              <li>Não existe módulo separado de campanha no código</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Páginas CMS</h3>
-            <ul>
-              <li>
-                Lista: <code>/api/v1/paginas</code>
-              </li>
-              <li>
-                Detalhe: <code>/v1/paginas/ { permalink}</code>
-              </li>
-              <li>Controla páginas institucionais e conteúdo HTML</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Admin/API</span>
-            <h3>Produtos exibidos</h3>
-            <ul>
-              <li>
-                Nome, imagem, preço, desconto e badges vêm das APIs de
-                produto/vitrine
-              </li>
-              <li>
-                A agência altera a curadoria/posição via vitrine, quando
-                disponível no Admin
-              </li>
-              <li>Layout interno do card não é editável pelo Admin</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="integrations">
-        <h2>SEO, marketing e integrações</h2>
-        <p class="section-intro">
-          Estes campos são carregados em <code>storeSettings</code>. Eles afetam
-          scripts, rastreamento, suporte, privacidade e comunicação com o
-          cliente.
-        </p>
-
-        <div class="grid">
-          <article class="card">
-            <span class="tag tag-admin">SEO</span>
-            <h3>SEO da loja</h3>
-            <ul>
-              <li>
-                Título: <code>storeSettings.seo.titulo</code>
-              </li>
-              <li>
-                Descrição: <code>descricao</code>
-              </li>
-              <li>
-                Keywords: <code>palavrasChaves</code>
-              </li>
-              <li>Robots e sitemaps</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Google</span>
-            <h3>Google</h3>
-            <ul>
-              <li>
-                Analytics: <code>google.analytics</code>
-              </li>
-              <li>
-                Tag Manager: <code>google.tagManager</code>
-              </li>
-              <li>
-                Ads: <code>google.adWords</code>
-              </li>
-              <li>
-                Maps: <code>google.maps</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Marketing</span>
-            <h3>Pixels e busca</h3>
-            <ul>
-              <li>
-                Facebook Pixel: <code>storeSettings.facebook</code>
-              </li>
-              <li>
-                Linx: <code>storeSettings.linx</code>
-              </li>
-              <li>
-                Busca por relevância: <code>linx.buscarPorRelevancia</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Atendimento</span>
-            <h3>WhatsApp e Freshdesk</h3>
-            <ul>
-              <li>WhatsApp: número, país, saudação e mensagem de orçamento</li>
-              <li>Freshdesk: ativo, host, token e widget UUID</li>
-              <li>SAC: email, telefone e horário</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Privacidade</span>
-            <h3>LGPD e Privacy Tools</h3>
-            <ul>
-              <li>
-                Termos de navegação: <code>lgpd.termosNavegacao</code>
-              </li>
-              <li>
-                Exclusão de cadastro:
-                <code>lgpd.habilitarExclusaoCadastro</code>
-              </li>
-              <li>
-                Banner e autoblock: <code>privacyTools</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Checkout/risco</span>
-            <h3>ClearSale e pós-venda</h3>
-            <ul>
-              <li>
-                Antifraude: <code>clearSale.ativo</code>e <code>key</code>
-              </li>
-              <li>
-                Tracking pós-venda: <code>pedidoPosVenda</code>
-              </li>
-              <li>URL de API de tracking e token lojista</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="operations">
-        <h2>Configurações operacionais</h2>
-        <p class="section-intro">
-          Configurações que mudam comportamento de negócio, mensagens e
-          disponibilidade, mas ainda são consumidas pelo storefront via API.
-        </p>
-
-        <div class="grid">
-          <article class="card">
-            <span class="tag tag-admin">Operação</span>
-            <h3>Modo offline</h3>
-            <ul>
-              <li>
-                <code>storeSettings.offline.ativo</code>
-              </li>
-              <li>Título e mensagem da página offline</li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Entrega</span>
-            <h3>Frete e entrega local</h3>
-            <ul>
-              <li>
-                <code>frete.entregaLocal</code>
-              </li>
-              <li>
-                <code>frete.pedidoMinimo</code>
-              </li>
-              <li>
-                <code>frete.linkRegulamento</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Cadastro</span>
-            <h3>Validações</h3>
-            <ul>
-              <li>
-                Gerenciar cadastro:
-                <code>geral.habilitarGerenciarCadastro</code>
-              </li>
-              <li>
-                Validação CPF: <code>validacaoCpf.ativo</code>e
-                <code>mensagem</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Farmácia</span>
-            <h3>PBM e FullPoints</h3>
-            <ul>
-              <li>
-                PBM: <code>storeSettings.pbm.ativo</code>
-              </li>
-              <li>
-                FullPoints: <code>storeSettings.fullPoints.ativo</code>
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Localização</span>
-            <h3>Busca geolocalizada</h3>
-            <ul>
-              <li>
-                <code>geral.buscaGeolocalizada</code>
-              </li>
-              <li>
-                Afeta parâmetros enviados para vitrines e disponibilidade por
-                local/seller
-              </li>
-            </ul>
-          </article>
-          <article class="card">
-            <span class="tag tag-admin">Redirects</span>
-            <h3>Redirecionamentos</h3>
-            <ul>
-              <li>Origem, destino e flag permanente</li>
-              <li>Carregados via serviço de redirects do tenant</li>
-            </ul>
-          </article>
-        </div>
-      </section>
-
-      <section id="matrix">
-        <h2>Matriz rápida</h2>
-        <p class="section-intro">
-          Resumo do que é alterável pela agência e o que deve ser solicitado ao
-          time de desenvolvimento.
-        </p>
-
-        <div class="matrix">
-          <div class="row header">
-            <div>Área</div>
-            <div>Agência/Admin pode alterar</div>
-            <div>Precisa de código</div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>Cores e tema</strong>
-            </div>
-            <div>Cores do tenant e escolha do template visual.</div>
-            <div>
-              Criar um novo template ou mudar o comportamento interno dos
-              modelos.
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>Branding</strong>
-            </div>
-            <div>
-              Logos, favicon, nome, selo, endereço, SAC e redes sociais.
-            </div>
-            <div>
-              Mudar estrutura do header/footer além do que o template permite.
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>Home e campanhas</strong>
-            </div>
-            <div>
-              Banners, ordem de vitrines, hotsites, HTML CMS, produtos curados.
-            </div>
-            <div>
-              Novo tipo de bloco, nova interação ou novo layout de seção.
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>Marketing</strong>
-            </div>
-            <div>SEO, GTM, Analytics, Ads, Maps, Facebook Pixel e Linx.</div>
-            <div>
-              Integração que não exista em <code>storeSettings</code>ou env.
-            </div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>Atendimento</strong>
-            </div>
-            <div>WhatsApp, Freshdesk, SAC, mensagens e horário.</div>
-            <div>Novo canal ou novo widget não previsto no schema atual.</div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>Operação</strong>
-            </div>
-            <div>
-              Offline, frete local, LGPD, Privacy Tools, CPF, PBM, FullPoints,
-              redirects.
-            </div>
-            <div>
-              Regra de negócio nova ou alteração em fluxo de checkout/cadastro.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="sources">
-        <h2>Referências principais no código</h2>
-        <p class="section-intro">
-          A agência não precisa editar estes arquivos; eles são apenas
-          referência para entender de onde os dados vêm.
-        </p>
-        <div class="callout">
-          <p>
-            <code>src/schemas/StoreSettings.tsx</code>define os campos de
-            configuração.
-            <code>src/services/theme.ts</code>carrega tema e cores.
-            <code>src/services/storeAndMenu.ts</code>carrega menus, settings e
-            páginas.
-            <code>src/collections/showcase.ts</code>carrega vitrines e hotsites.
-            <code>src/collections/layout.ts</code>carrega layout, recursos e
-            footer.
-          </p>
-        </div>
-      </section>
-
-      <p class="footer">
-        Guia enxuto para agência — foco em configurações Admin/API, sem edição
-        direta de código.
+<body>
+  <main class="page">
+    <header class="hero">
+      <div
+        style="font-size:1.3rem;font-weight:700;letter-spacing:0.18em;color:#fff;margin-bottom:28px;opacity:0.9;text-transform:uppercase;">
+        RHEON
+      </div>
+      <p class="eyebrow">Guia para agência</p>
+      <h1>O que pode ser alterado pelo Admin/API</h1>
+      <p>
+        Este documento resume apenas os pontos que a agência consegue ajustar
+        sem mexer no código: tema, identidade visual, banners, vitrines, SEO,
+        integrações, atendimento e configurações operacionais da loja.
       </p>
-    </main>
-  </body>
+      <nav class="quick-nav" aria-label="Atalhos">
+        <a href="#visual">Visual</a>
+        <a href="#content">Conteúdo</a>
+        <a href="#showcase">Componentes da Home</a>
+        <a href="#integrations">Integrações</a>
+        <a href="#operations">Operação</a>
+        <a href="#matrix">Matriz</a>
+      </nav>
+    </header>
+
+    <section id="project">
+      <h2>Informações úteis do projeto</h2>
+      <p class="section-intro">
+        A loja é multi-tenant. O storefront identifica o tenant pelo domínio,
+        busca as configurações nas APIs e renderiza a interface com esses
+        dados. A agência deve considerar o Admin/API como fonte de verdade.
+      </p>
+      <div class="grid">
+        <article class="card">
+          <span class="tag tag-note">Contexto</span>
+          <h3>Stack</h3>
+          <p>
+            Next.js 13 Pages Router, React 18, TypeScript, Tailwind CSS e APIs
+            Lean Commerce.
+          </p>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Fluxo</span>
+          <h3>Como a configuração chega na loja</h3>
+          <p>
+            <code>Host</code>define o tenant, o tenant define as APIs, e as
+            APIs retornam tema, menus, settings, vitrines e páginas.
+          </p>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Limite</span>
+          <h3>Sem alteração de código</h3>
+          <p>
+            O Admin altera conteúdo, cores e flags existentes. Novos layouts,
+            novas interações ou novos tipos de bloco exigem desenvolvimento.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="visual">
+      <h2>Visual e identidade</h2>
+      <p class="section-intro">
+        Esses campos controlam a aparência principal da loja. Eles vêm de
+        <code>/api/v1/layouts/template</code>e
+        <code>/api/v1/configuracoes</code>.
+      </p>
+
+      <div class="swatches" aria-label="Cores configuráveis">
+        <div class="swatch">
+          <div class="swatch-color" style="background:#06847b"></div>
+          <div class="swatch-body">
+            <strong>Cor primária</strong>
+            <code>theme.primaryColor</code>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#ffffff"></div>
+          <div class="swatch-body">
+            <strong>Cor do header</strong>
+            <code>theme.headerColor</code>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#666666"></div>
+          <div class="swatch-body">
+            <strong>Texto do header</strong>
+            <code>theme.headerTextColor</code>
+          </div>
+        </div>
+        <div class="swatch">
+          <div class="swatch-color" style="background:#3e3e3e"></div>
+          <div class="swatch-body">
+            <strong>Título do footer</strong>
+            <code>theme.footerTitleColor</code>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid" style="margin-top:16px">
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Branding</h3>
+          <ul>
+            <li>
+              Nome da loja: <code>storeSettings.loja.nome</code>
+            </li>
+            <li>
+              Logo do header: <code>storeSettings.loja.logo</code>
+            </li>
+            <li>
+              Logo do footer: <code>storeSettings.loja.logoFooter</code>
+            </li>
+            <li>
+              Favicon/ícone: <code>storeSettings.loja.icone</code>
+            </li>
+            <li>
+              Selo: <code>storeSettings.loja.selo.logo</code>e<code>url</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Templates visuais</h3>
+          <p>O template define o comportamento visual base da loja.</p>
+          <div class="template-preview" style="margin-top:12px">
+            <div class="shape modelo1"></div>
+            <div>
+              <strong>modelo1</strong>
+              <br>
+              Radius padrão de 6px
+            </div>
+          </div>
+          <div class="template-preview" style="margin-top:10px">
+            <div class="shape modelo2"></div>
+            <div>
+              <strong>modelo2</strong>
+              <br>
+              Estilo arredondado/pill
+            </div>
+          </div>
+          <div class="template-preview" style="margin-top:10px">
+            <div class="shape modelo3"></div>
+            <div>
+              <strong>modelo3</strong>
+              <br>
+              Header reorganizado e banner mais amplo
+            </div>
+          </div>
+          <span class="source">Campo: <code>theme.template</code></span>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Footer e contato</h3>
+          <ul>
+            <li>
+              HTML do footer: <code>/v1/layouts/footer</code>
+            </li>
+            <li>
+              Recursos visuais: <code>/v1/layouts/recursos</code>
+            </li>
+            <li>
+              SAC: <code>storeSettings.loja.sac</code>
+            </li>
+            <li>
+              Endereço: <code>storeSettings.loja.endereco</code>
+            </li>
+            <li>
+              Redes sociais: <code>storeSettings.redesSociais</code>
+            </li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="content">
+      <h2>Conteúdo, navegação e vitrines</h2>
+      <p class="section-intro">
+        A maior parte da experiência comercial da home e das páginas de
+        catálogo é configurável por API: menus, banners, blocos de vitrine,
+        hotsites e páginas CMS.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Menus</h3>
+          <ul>
+            <li>
+              Endpoint: <code>/api/v1/menus</code>
+            </li>
+            <li>Nome, URL, tipo de URL, ordem, destaque, novo e filhos</li>
+            <li>
+              Mega menu: <code>storeSettings.geral.habilitarMegaMenu</code>
+            </li>
+            <li>
+              Ocultar categorias sem produto:
+              <code>ocultarCategoriasSemProdutos</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Banners</h3>
+          <ul>
+            <li>
+              Endpoint: <code>/v1/banners</code>
+            </li>
+            <li>Imagem desktop e imagem mobile</li>
+            <li>Link de destino, vigência e segmentações</li>
+            <li>Também podem vir dentro das vitrines da home</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Vitrines da home</h3>
+          <ul>
+            <li>
+              Endpoint: <code>/v1/vitrines/home</code>
+            </li>
+            <li>
+              Ordem dos blocos: <code>componentes[].ordem</code>
+            </li>
+            <li>
+              Tipos: <code>BANNER</code>, <code>PRODUTO</code>,
+              <code>MARCA</code>, <code>HTML</code>, <code>RECURSO</code>,
+              <code>BULLETS</code>, <code>CUPOM_DESCONTO</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Hotsites e campanhas</h3>
+          <ul>
+            <li>
+              Endpoint: <code>/v1/vitrines/hotsite/ { permalink}</code>
+            </li>
+            <li>Usado como campanha promocional configurável</li>
+            <li>Não existe módulo separado de campanha no código</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Páginas CMS</h3>
+          <ul>
+            <li>
+              Lista: <code>/api/v1/paginas</code>
+            </li>
+            <li>
+              Detalhe: <code>/v1/paginas/ { permalink}</code>
+            </li>
+            <li>Controla páginas institucionais e conteúdo HTML</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Produtos exibidos</h3>
+          <ul>
+            <li>
+              Nome, imagem, preço, desconto e badges vêm das APIs de
+              produto/vitrine
+            </li>
+            <li>
+              A agência altera a curadoria/posição via vitrine, quando
+              disponível no Admin
+            </li>
+            <li>Layout interno do card não é editável pelo Admin</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="showcase">
+      <h2>Componentes da home (vitrine)</h2>
+      <p class="section-intro">
+        A home é composta por blocos configuráveis no painel em
+        <strong>Marketing → Vitrines → Home → Componentes</strong>. Cada bloco
+        tem um tipo (<code>component.tipo</code>) e campos próprios. A ordem
+        dos blocos pode ser reordenada arrastando no Admin.
+      </p>
+
+      <div class="comp-grid">
+        <!-- BANNERS COM PRODUTOS CARROSSEL -->
+        <article class="comp-card" style="grid-column:1 / -1">
+          <div class="comp-header">
+            <h3 class="comp-name">Banners com produtos (full-bleed)</h3>
+            <span class="comp-tipo">BANNER_PRODUTOS</span>
+          </div>
+          <div class="comp-mock" style="padding:0;overflow:hidden">
+            <!-- full-bleed banner mockup -->
+            <div
+              style="position:relative;background:#000;opacity:0.85;height:110px;width:100%;display:flex;align-items:center;justify-content:center">
+              <span
+                style="color:rgba(255,255,255,0.3);font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase">Banner
+                full-width (sai do container)</span>
+              <!-- seta esquerda -->
+              <div
+                style="position:absolute;left:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">
+                <div
+                  style="border-top:2px solid rgba(255,255,255,0.6);border-left:2px solid rgba(255,255,255,0.6);width:6px;height:6px;transform:rotate(-45deg);margin-left:3px">
+                </div>
+              </div>
+              <!-- seta direita -->
+              <div
+                style="position:absolute;right:10px;top:50%;transform:translateY(-50%);width:20px;height:20px;border-radius:50%;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center">
+                <div
+                  style="border-top:2px solid rgba(255,255,255,0.6);border-right:2px solid rgba(255,255,255,0.6);width:6px;height:6px;transform:rotate(45deg);margin-right:3px">
+                </div>
+              </div>
+              <!-- produtos sobrepostos na base -->
+              <div
+                style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);display:flex;gap:5px;width:90%;justify-content:center">
+                <div
+                  style="background:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:3px;width:54px;padding:4px">
+                  <div style="background:var(--gray-100);height:36px;border-radius:2px;margin-bottom:3px"></div>
+                  <div style="background:var(--gray-300);height:4px;border-radius:1px;margin-bottom:2px"></div>
+                  <div style="background:#000;height:4px;border-radius:1px;opacity:0.2;width:70%"></div>
+                </div>
+                <div
+                  style="background:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:3px;width:54px;padding:4px">
+                  <div style="background:var(--gray-100);height:36px;border-radius:2px;margin-bottom:3px"></div>
+                  <div style="background:var(--gray-300);height:4px;border-radius:1px;margin-bottom:2px"></div>
+                  <div style="background:#000;height:4px;border-radius:1px;opacity:0.2;width:70%"></div>
+                </div>
+                <div
+                  style="background:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:3px;width:54px;padding:4px">
+                  <div style="background:var(--gray-100);height:36px;border-radius:2px;margin-bottom:3px"></div>
+                  <div style="background:var(--gray-300);height:4px;border-radius:1px;margin-bottom:2px"></div>
+                  <div style="background:#000;height:4px;border-radius:1px;opacity:0.2;width:70%"></div>
+                </div>
+                <div
+                  style="background:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:3px;width:54px;padding:4px">
+                  <div style="background:var(--gray-100);height:36px;border-radius:2px;margin-bottom:3px"></div>
+                  <div style="background:var(--gray-300);height:4px;border-radius:1px;margin-bottom:2px"></div>
+                  <div style="background:#000;height:4px;border-radius:1px;opacity:0.2;width:70%"></div>
+                </div>
+                <div
+                  style="background:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:3px;width:54px;padding:4px">
+                  <div style="background:var(--gray-100);height:36px;border-radius:2px;margin-bottom:3px"></div>
+                  <div style="background:var(--gray-300);height:4px;border-radius:1px;margin-bottom:2px"></div>
+                  <div style="background:#000;height:4px;border-radius:1px;opacity:0.2;width:70%"></div>
+                </div>
+                <div
+                  style="background:#fff;border:1px solid rgba(255,255,255,0.2);border-radius:3px;width:54px;padding:4px">
+                  <div style="background:var(--gray-100);height:36px;border-radius:2px;margin-bottom:3px"></div>
+                  <div style="background:var(--gray-300);height:4px;border-radius:1px;margin-bottom:2px"></div>
+                  <div style="background:#000;height:4px;border-radius:1px;opacity:0.2;width:70%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Banner em tela cheia (quebra o container — ocupa 100vw) com
+              carrossel de fade entre imagens. Os cards de produto ficam
+              sobrepostos na parte inferior do banner, dentro do container
+              centralizado. Exibe até 6 produtos.
+            </p>
+            <ul>
+              <li>
+                1 ou mais banners (se mais de 1, vira carrossel com fade e
+                setas)
+              </li>
+              <li>Imagem do banner + link de destino</li>
+              <li>Setas de navegação aparecem no hover (desktop)</li>
+              <li>
+                Produtos curados: até 6 exibidos com imagem, nome, preço
+                "De/Por" e badge de desconto
+              </li>
+              <li>
+                Produtos ficam sobrepostos na base do banner (posição
+                absoluta)
+              </li>
+            </ul>
+            <div class="comp-note">
+              Componente oculto em mobile (<code>hidden lg:block</code>). Para
+              garantir experiência mobile, adicione um componente PRODUTO
+              separado na vitrine.
+            </div>
+          </div>
+        </article>
+
+        <!-- BANNERS CARROSSEL -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Banners — Carrossel</h3>
+            <span class="comp-tipo">BANNER · CARROSSEL</span>
+          </div>
+          <div class="comp-mock">
+            <div style="position:relative">
+              <div class="mock-banner-real">Imagem do banner</div>
+              <div class="mock-banner-slide"
+                style="position:static;margin-top:6px;display:flex;gap:4px;justify-content:center">
+                <div class="mock-dot active"></div>
+                <div class="mock-dot"></div>
+                <div class="mock-dot"></div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Slider de banners em tela cheia. Aparece no topo da home, acima
+              dos outros componentes. Suporta múltiplas imagens com auto-play.
+            </p>
+            <ul>
+              <li>
+                Imagem <strong>desktop</strong>(campo <code>imagem</code>)
+              </li>
+              <li>
+                Imagem <strong>mobile</strong>(campo <code>imagemMobile</code>
+                )
+              </li>
+              <li>Link de destino ao clicar</li>
+              <li>Vigência (data de início e fim)</li>
+              <li>Ordem de exibição entre os banners</li>
+            </ul>
+            <div class="comp-note">
+              Sempre forneça imagens separadas para desktop e mobile. O
+              storefront exibe a versão correta conforme o device do
+              visitante.
+            </div>
+          </div>
+        </article>
+
+        <!-- BANNERS GRADE -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Banners — Grade</h3>
+            <span class="comp-tipo">BANNER · GRADE</span>
+          </div>
+          <div class="comp-mock">
+            <div class="mock-grid-banners cols-2">
+              <div class="mock-banner-cell"></div>
+              <div class="mock-banner-cell"></div>
+            </div>
+            <div class="mock-grid-banners cols-3" style="margin-top:6px">
+              <div class="mock-banner-cell" style="height:40px"></div>
+              <div class="mock-banner-cell" style="height:40px"></div>
+              <div class="mock-banner-cell" style="height:40px"></div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Grade estática de banners, sem slide. Quantidade de colunas
+              definida pelo campo <code>quantidadeExibicao</code>. Oculto em
+              mobile quando não há <code>imagemMobile</code>.
+            </p>
+            <ul>
+              <li>
+                1, 2 ou 3 colunas (campo <code>quantidadeExibicao</code>)
+              </li>
+              <li>Imagem desktop e imagem mobile por banner</li>
+              <li>Link e vigência por item</li>
+            </ul>
+            <div class="comp-note">
+              Banners grade sem <code>imagemMobile</code>ficam ocultos em
+              telas pequenas. Sempre forneça a versão mobile para garantir
+              visibilidade.
+            </div>
+          </div>
+        </article>
+
+        <!-- LISTAGEM DE PRODUTOS -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Listagem de produtos</h3>
+            <span class="comp-tipo">PRODUTO</span>
+          </div>
+          <div class="comp-mock">
+            <div class="mock-section-title"></div>
+            <div class="mock-products">
+              <div class="mock-product-card">
+                <div class="mock-product-img"></div>
+                <div class="mock-product-info">
+                  <div class="mock-product-line"></div>
+                  <div class="mock-product-line short"></div>
+                  <div class="mock-product-line price"></div>
+                </div>
+              </div>
+              <div class="mock-product-card">
+                <div class="mock-product-img"></div>
+                <div class="mock-product-info">
+                  <div class="mock-product-line"></div>
+                  <div class="mock-product-line short"></div>
+                  <div class="mock-product-line price"></div>
+                </div>
+              </div>
+              <div class="mock-product-card">
+                <div class="mock-product-img"></div>
+                <div class="mock-product-info">
+                  <div class="mock-product-line"></div>
+                  <div class="mock-product-line short"></div>
+                  <div class="mock-product-line price"></div>
+                </div>
+              </div>
+              <div class="mock-product-card">
+                <div class="mock-product-img"></div>
+                <div class="mock-product-info">
+                  <div class="mock-product-line"></div>
+                  <div class="mock-product-line short"></div>
+                  <div class="mock-product-line price"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Exibe uma grade ou carrossel de produtos. O template define o
+              layout (grade ou slide). O título e subtítulo da seção são
+              configuráveis.
+            </p>
+            <ul>
+              <li>
+                Título da seção (<code>nome</code>)
+              </li>
+              <li>
+                Subtítulo (<code>subTitulo</code>) — visível apenas desktop
+              </li>
+              <li>
+                Template: grade ou carrossel (<code>template</code>)
+              </li>
+              <li>Produtos curados no Admin por SKU ou categoria</li>
+            </ul>
+            <div class="comp-note">
+              Nome e preço do produto vêm da API de catálogo, não do
+              componente. O Admin controla quais produtos aparecem e em que
+              posição.
+            </div>
+          </div>
+        </article>
+
+        <!-- MARCAS -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Marcas</h3>
+            <span class="comp-tipo">MARCA</span>
+          </div>
+          <div class="comp-mock">
+            <div class="mock-brands">
+              <div class="mock-brand">
+                <div class="mock-brand-dot"></div>
+              </div>
+              <div class="mock-brand">
+                <div class="mock-brand-dot"></div>
+              </div>
+              <div class="mock-brand">
+                <div class="mock-brand-dot"></div>
+              </div>
+              <div class="mock-brand">
+                <div class="mock-brand-dot"></div>
+              </div>
+              <div class="mock-brand">
+                <div class="mock-brand-dot"></div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Carrossel ou grade de logos de marcas parceiras. Cada item exibe
+              a logo e funciona como link para a página da marca.
+            </p>
+            <ul>
+              <li>Logo de cada marca</li>
+              <li>Link para listagem da marca</li>
+              <li>
+                Template: grade ou carrossel (<code>template</code>)
+              </li>
+              <li>Ordem das marcas</li>
+            </ul>
+          </div>
+        </article>
+
+
+
+        <!-- THUMBS COM PRODUTOS CARROSSEL -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Thumbs com produtos</h3>
+            <span class="comp-tipo">THUMBS_PRODUTOS</span>
+          </div>
+          <div class="comp-mock">
+            <div style="display:flex;gap:6px;overflow:hidden">
+              <!-- card 1 -->
+              <div
+                style="flex:1;border:1px solid var(--gray-300);border-radius:2px;background:#fff;overflow:hidden;min-width:0">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px">
+                  <div style="background:#000;border-radius:1px;height:7px;width:40%;opacity:0.15"></div>
+                  <div style="background:var(--gray-300);border-radius:1px;height:5px;width:22%"></div>
+                </div>
+                <div style="background:var(--gray-300);height:54px;width:100%"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;padding:6px 8px">
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                </div>
+              </div>
+              <!-- card 2 -->
+              <div
+                style="flex:1;border:1px solid var(--gray-300);border-radius:2px;background:#fff;overflow:hidden;min-width:0">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px">
+                  <div style="background:#000;border-radius:1px;height:7px;width:50%;opacity:0.15"></div>
+                  <div style="background:var(--gray-300);border-radius:1px;height:5px;width:22%"></div>
+                </div>
+                <div style="background:var(--gray-300);height:54px;width:100%"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;padding:6px 8px">
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                </div>
+              </div>
+              <!-- card 3 -->
+              <div
+                style="flex:1;border:1px solid var(--gray-300);border-radius:2px;background:#fff;overflow:hidden;min-width:0">
+                <div style="display:flex;justify-content:space-between;align-items:center;padding:6px 8px">
+                  <div style="background:#000;border-radius:1px;height:7px;width:45%;opacity:0.15"></div>
+                  <div style="background:var(--gray-300);border-radius:1px;height:5px;width:22%"></div>
+                </div>
+                <div style="background:var(--gray-300);height:54px;width:100%"></div>
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:4px;padding:6px 8px">
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                  <div
+                    style="border:1px solid var(--gray-300);border-radius:2px;height:26px;background:var(--gray-100)">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Cards lado a lado, cada um representando uma vitrine. Cada card
+              exibe: nome da vitrine + link "Ver todos", imagem de capa
+              (banner), e até 4 produtos em miniatura abaixo.
+            </p>
+            <ul>
+              <li>
+                Nome da vitrine (<code>nome</code>) — exibido em destaque
+              </li>
+              <li>
+                Link para a página da vitrine (<code>permalink</code>)
+              </li>
+              <li>
+                Imagem de capa da vitrine (<code>imagem</code>)
+              </li>
+              <li>Até 4 produtos com imagem linkada ao detalhe</li>
+              <li>
+                O componente só aparece se houver ao menos uma thumbnail
+                cadastrada
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- BULLETS -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Bullets (categorias visuais)</h3>
+            <span class="comp-tipo">BULLETS</span>
+          </div>
+          <div class="comp-mock">
+            <div style="display:flex;gap:10px;justify-content:center;padding:6px 0;overflow:hidden">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0">
+                <div
+                  style="width:54px;height:54px;border-radius:50%;background:var(--gray-300);box-shadow:0 2px 8px rgba(0,0,0,0.12)">
+                </div>
+                <div style="background:var(--gray-300);border-radius:1px;height:5px;width:36px"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0">
+                <div
+                  style="width:54px;height:54px;border-radius:50%;background:var(--gray-300);box-shadow:0 2px 8px rgba(0,0,0,0.12)">
+                </div>
+                <div style="background:var(--gray-300);border-radius:1px;height:5px;width:30px"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0">
+                <div
+                  style="width:54px;height:54px;border-radius:50%;background:var(--gray-300);box-shadow:0 2px 8px rgba(0,0,0,0.12)">
+                </div>
+                <div style="background:var(--gray-300);border-radius:1px;height:5px;width:42px"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0">
+                <div
+                  style="width:54px;height:54px;border-radius:50%;background:var(--gray-300);box-shadow:0 2px 8px rgba(0,0,0,0.12)">
+                </div>
+                <div style="background:var(--gray-300);border-radius:1px;height:5px;width:38px"></div>
+              </div>
+              <div style="display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0">
+                <div
+                  style="width:54px;height:54px;border-radius:50%;background:var(--gray-300);box-shadow:0 2px 8px rgba(0,0,0,0.12)">
+                </div>
+                <div style="background:var(--gray-300);border-radius:1px;height:5px;width:34px"></div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Linha de círculos com imagem e label abaixo. Funciona como
+              atalho de navegação para vitrines/categorias ou abre um modal
+              com vídeo ao clicar.
+            </p>
+            <ul>
+              <li>
+                Imagem circular por item (<code>imagem</code>)
+              </li>
+              <li>
+                Label abaixo do círculo (<code>title</code>)
+              </li>
+              <li>
+                Texto alternativo para acessibilidade (<code>alt</code>)
+              </li>
+              <li>
+                Comportamento ao clicar (<code>target</code>):
+                <ul>
+                  <li>
+                    <code>URL</code>— navega para o link configurado
+                  </li>
+                  <li>
+                    <code>VIDEO</code>— abre modal com vídeo incorporado
+                    (YouTube, Vimeo ou <code>.mp4</code>)
+                  </li>
+                </ul>
+              </li>
+              <li>
+                URL de destino ou do vídeo (<code>url</code>)
+              </li>
+              <li>
+                Ordem dos itens (<code>ordem</code>)
+              </li>
+            </ul>
+            <div class="comp-note">
+              Scroll horizontal automático em mobile; grid no desktop. Vídeos
+              do YouTube e Vimeo são incorporados automaticamente via URL.
+            </div>
+          </div>
+        </article>
+
+        <!-- RECURSOS -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Recursos</h3>
+            <span class="comp-tipo">RECURSO</span>
+          </div>
+          <div class="comp-mock">
+            <div class="mock-resources">
+              <div class="mock-resource">
+                <div class="mock-resource-icon"></div>
+                <div class="mock-resource-line"></div>
+              </div>
+              <div class="mock-resource">
+                <div class="mock-resource-icon"></div>
+                <div class="mock-resource-line"></div>
+              </div>
+              <div class="mock-resource">
+                <div class="mock-resource-icon"></div>
+                <div class="mock-resource-line"></div>
+              </div>
+              <div class="mock-resource">
+                <div class="mock-resource-icon"></div>
+                <div class="mock-resource-line"></div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Blocos de ícone + label dispostos em linha. Usado para comunicar
+              vantagens ou serviços de forma visual e compacta (ex.: "Frete
+              grátis", "Troca fácil").
+            </p>
+            <ul>
+              <li>
+                Título da seção (<code>titulo</code>)
+              </li>
+              <li>
+                Nome do bloco (<code>nome</code>)
+              </li>
+              <li>Ícone, label e link por recurso</li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- CUPOM DE DESCONTO -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">Cupom de desconto</h3>
+            <span class="comp-tipo">CUPOM_DESCONTO</span>
+          </div>
+          <div class="comp-mock">
+            <div class="mock-coupons">
+              <div class="mock-coupon">
+                <div class="mock-coupon-code"></div>
+                <div class="mock-coupon-line"></div>
+                <div class="mock-coupon-line short" style="width:45%"></div>
+              </div>
+              <div class="mock-coupon">
+                <div class="mock-coupon-code"></div>
+                <div class="mock-coupon-line"></div>
+                <div class="mock-coupon-line short" style="width:45%"></div>
+              </div>
+              <div class="mock-coupon">
+                <div class="mock-coupon-code"></div>
+                <div class="mock-coupon-line"></div>
+                <div class="mock-coupon-line short" style="width:45%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Exibe cartões de cupom de desconto copiáveis. Todos os
+              componentes do tipo <code>CUPOM_DESCONTO</code>na vitrine são
+              agrupados automaticamente em um único bloco.
+            </p>
+            <ul>
+              <li>Código do cupom</li>
+              <li>Valor ou percentual de desconto</li>
+              <li>Validade e regras (descrição)</li>
+              <li>
+                Vários cupons podem ser adicionados; todos aparecem juntos
+              </li>
+            </ul>
+          </div>
+        </article>
+
+        <!-- HTML LIVRE -->
+        <article class="comp-card">
+          <div class="comp-header">
+            <h3 class="comp-name">HTML livre</h3>
+            <span class="comp-tipo">HTML</span>
+          </div>
+          <div class="comp-mock">
+            <div class="mock-html">
+              <div class="mock-html-line" style="width:55%"></div>
+              <div class="mock-html-line" style="width:90%"></div>
+              <div class="mock-html-line" style="width:75%"></div>
+              <div class="mock-html-line" style="width:40%"></div>
+            </div>
+          </div>
+          <div class="comp-body">
+            <p>
+              Bloco de conteúdo livre em HTML. Útil para banners customizados,
+              textos institucionais, incorporação de widgets externos ou
+              qualquer estrutura visual específica.
+            </p>
+            <ul>
+              <li>
+                Campo <code>html</code>: conteúdo HTML completo
+              </li>
+              <li>
+                Campo <code>nome</code>: identificador interno (não aparece na
+                loja)
+              </li>
+            </ul>
+            <div class="comp-note">
+              Use HTML semântico e imagens otimizadas. Evite scripts inline e
+              estilos que conflitem com o tema da loja.
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div class="callout" style="margin-top:20px">
+        <p style="margin:0;font-size:0.88rem">
+          <strong>Como gerenciar a ordem:</strong>no painel, acesse
+          <strong>Marketing → Vitrines → Home → Componentes</strong>. Arraste os blocos para reordenar. Cada bloco tem
+          seu tipo, nome
+          interno e campos próprios. Novos tipos de componente só podem ser
+          adicionados via desenvolvimento.
+        </p>
+      </div>
+    </section>
+
+    <section id="integrations">
+      <h2>SEO, marketing e integrações</h2>
+      <p class="section-intro">
+        Estes campos são carregados em <code>storeSettings</code>. Eles afetam
+        scripts, rastreamento, suporte, privacidade e comunicação com o
+        cliente.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag tag-admin">SEO</span>
+          <h3>SEO da loja</h3>
+          <ul>
+            <li>
+              Título: <code>storeSettings.seo.titulo</code>
+            </li>
+            <li>
+              Descrição: <code>descricao</code>
+            </li>
+            <li>
+              Keywords: <code>palavrasChaves</code>
+            </li>
+            <li>Robots e sitemaps</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Google</span>
+          <h3>Google</h3>
+          <ul>
+            <li>
+              Analytics: <code>google.analytics</code>
+            </li>
+            <li>
+              Tag Manager: <code>google.tagManager</code>
+            </li>
+            <li>
+              Ads: <code>google.adWords</code>
+            </li>
+            <li>
+              Maps: <code>google.maps</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Marketing</span>
+          <h3>Pixels e busca</h3>
+          <ul>
+            <li>
+              Facebook Pixel: <code>storeSettings.facebook</code>
+            </li>
+            <li>
+              Linx: <code>storeSettings.linx</code>
+            </li>
+            <li>
+              Busca por relevância: <code>linx.buscarPorRelevancia</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Atendimento</span>
+          <h3>WhatsApp e Freshdesk</h3>
+          <ul>
+            <li>WhatsApp: número, país, saudação e mensagem de orçamento</li>
+            <li>Freshdesk: ativo, host, token e widget UUID</li>
+            <li>SAC: email, telefone e horário</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Privacidade</span>
+          <h3>LGPD e Privacy Tools</h3>
+          <ul>
+            <li>
+              Termos de navegação: <code>lgpd.termosNavegacao</code>
+            </li>
+            <li>
+              Exclusão de cadastro:
+              <code>lgpd.habilitarExclusaoCadastro</code>
+            </li>
+            <li>
+              Banner e autoblock: <code>privacyTools</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Checkout/risco</span>
+          <h3>ClearSale e pós-venda</h3>
+          <ul>
+            <li>
+              Antifraude: <code>clearSale.ativo</code>e <code>key</code>
+            </li>
+            <li>
+              Tracking pós-venda: <code>pedidoPosVenda</code>
+            </li>
+            <li>URL de API de tracking e token lojista</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="operations">
+      <h2>Configurações operacionais</h2>
+      <p class="section-intro">
+        Configurações que mudam comportamento de negócio, mensagens e
+        disponibilidade, mas ainda são consumidas pelo storefront via API.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag tag-admin">Operação</span>
+          <h3>Modo offline</h3>
+          <ul>
+            <li>
+              <code>storeSettings.offline.ativo</code>
+            </li>
+            <li>Título e mensagem da página offline</li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Entrega</span>
+          <h3>Frete e entrega local</h3>
+          <ul>
+            <li>
+              <code>frete.entregaLocal</code>
+            </li>
+            <li>
+              <code>frete.pedidoMinimo</code>
+            </li>
+            <li>
+              <code>frete.linkRegulamento</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Cadastro</span>
+          <h3>Validações</h3>
+          <ul>
+            <li>
+              Gerenciar cadastro:
+              <code>geral.habilitarGerenciarCadastro</code>
+            </li>
+            <li>
+              Validação CPF: <code>validacaoCpf.ativo</code>e
+              <code>mensagem</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Farmácia</span>
+          <h3>PBM e FullPoints</h3>
+          <ul>
+            <li>
+              PBM: <code>storeSettings.pbm.ativo</code>
+            </li>
+            <li>
+              FullPoints: <code>storeSettings.fullPoints.ativo</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Localização</span>
+          <h3>Busca geolocalizada</h3>
+          <ul>
+            <li>
+              <code>geral.buscaGeolocalizada</code>
+            </li>
+            <li>
+              Afeta parâmetros enviados para vitrines e disponibilidade por
+              local/seller
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-admin">Redirects</span>
+          <h3>Redirecionamentos</h3>
+          <ul>
+            <li>Origem, destino e flag permanente</li>
+            <li>Carregados via serviço de redirects do tenant</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="matrix">
+      <h2>Matriz rápida</h2>
+      <p class="section-intro">
+        Resumo do que é alterável pela agência e o que deve ser solicitado ao
+        time de desenvolvimento.
+      </p>
+
+      <div class="matrix">
+        <div class="row header">
+          <div>Área</div>
+          <div>Agência/Admin pode alterar</div>
+          <div>Precisa de código</div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Cores e tema</strong>
+          </div>
+          <div>Cores do tenant e escolha do template visual.</div>
+          <div>
+            Criar um novo template ou mudar o comportamento interno dos
+            modelos.
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Branding</strong>
+          </div>
+          <div>
+            Logos, favicon, nome, selo, endereço, SAC e redes sociais.
+          </div>
+          <div>
+            Mudar estrutura do header/footer além do que o template permite.
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Home e campanhas</strong>
+          </div>
+          <div>
+            Banners, ordem de vitrines, hotsites, HTML CMS, produtos curados.
+          </div>
+          <div>
+            Novo tipo de bloco, nova interação ou novo layout de seção.
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Marketing</strong>
+          </div>
+          <div>SEO, GTM, Analytics, Ads, Maps, Facebook Pixel e Linx.</div>
+          <div>
+            Integração que não exista em <code>storeSettings</code>ou env.
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Atendimento</strong>
+          </div>
+          <div>WhatsApp, Freshdesk, SAC, mensagens e horário.</div>
+          <div>Novo canal ou novo widget não previsto no schema atual.</div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Operação</strong>
+          </div>
+          <div>
+            Offline, frete local, LGPD, Privacy Tools, CPF, PBM, FullPoints,
+            redirects.
+          </div>
+          <div>
+            Regra de negócio nova ou alteração em fluxo de checkout/cadastro.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="sources">
+      <h2>Referências principais no código</h2>
+      <p class="section-intro">
+        A agência não precisa editar estes arquivos; eles são apenas
+        referência para entender de onde os dados vêm.
+      </p>
+      <div class="callout">
+        <p>
+          <code>src/schemas/StoreSettings.tsx</code>define os campos de
+          configuração.
+          <code>src/services/theme.ts</code>carrega tema e cores.
+          <code>src/services/storeAndMenu.ts</code>carrega menus, settings e
+          páginas.
+          <code>src/collections/showcase.ts</code>carrega vitrines e hotsites.
+          <code>src/collections/layout.ts</code>carrega layout, recursos e
+          footer.
+        </p>
+      </div>
+    </section>
+
+    <p class="footer">
+      Guia enxuto para agência — foco em configurações Admin/API, sem edição
+      direta de código.
+    </p>
+  </main>
+</body>
+
 </html>
