@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GTM &amp; Eventos — Lean Marketplace Farma</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #000000;
+      --primary-dark: #111111;
+      --cyan: #444444;
+      --green: #555555;
+      --orange: #888888;
+      --red: #333333;
+      --black: #0a0a0a;
+      --gray-100: #f5f5f5;
+      --gray-300: #e0e0e0;
+      --gray-700: #888888;
+      --gray-900: #444444;
+      --page: #f9f9f9;
+      --radius: 4px;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.07);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--page);
+      color: var(--black);
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    code {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 2px;
+      color: #000;
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.86em;
+      padding: 0.1rem 0.35rem;
+    }
+
+    pre {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin: 12px 0 0;
+      overflow-x: auto;
+      padding: 14px 16px;
+    }
+
+    .page {
+      margin: 0 auto;
+      max-width: 1180px;
+      padding: 32px 20px 56px;
+    }
+
+    .hero {
+      background: #000000;
+      border-radius: 2px;
+      box-shadow: var(--shadow);
+      color: #fff;
+      overflow: hidden;
+      padding: 52px;
+      position: relative;
+    }
+
+    .hero::before {
+      content: "RHEON";
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11rem;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      color: rgba(255, 255, 255, 0.04);
+      line-height: 1;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .eyebrow {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      margin: 0 0 20px;
+      opacity: 0.5;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin: 0;
+      max-width: 780px;
+    }
+
+    .hero p {
+      font-size: 1rem;
+      font-weight: 300;
+      margin: 20px 0 0;
+      max-width: 640px;
+      opacity: 0.7;
+    }
+
+    .quick-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 32px;
+    }
+
+    .quick-nav a {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 2px;
+      color: rgba(255, 255, 255, 0.75);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      padding: 7px 16px;
+      text-transform: uppercase;
+    }
+
+    .quick-nav a:hover {
+      background: rgba(255, 255, 255, 0.08);
+      text-decoration: none;
+    }
+
+    section {
+      margin-top: 48px;
+    }
+
+    h2 {
+      color: #000;
+      font-size: 1.35rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      line-height: 1.2;
+      margin: 0 0 6px;
+      text-transform: uppercase;
+    }
+
+    h3 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.01em;
+      margin: 0 0 8px;
+    }
+
+    .section-intro {
+      color: var(--gray-900);
+      margin: 0 0 20px;
+      max-width: 780px;
+      font-weight: 300;
+    }
+
+    .grid {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      box-shadow: none;
+      padding: 20px;
+    }
+
+    .card p {
+      margin: 0;
+    }
+
+    .card ul {
+      margin: 10px 0 0;
+      padding-left: 18px;
+    }
+
+    .card li {
+      margin: 5px 0;
+    }
+
+    .tag {
+      border-radius: 2px;
+      display: inline-flex;
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+      padding: 3px 8px;
+      text-transform: uppercase;
+    }
+
+    .tag-api {
+      background: #000;
+      color: #fff;
+    }
+
+    .tag-admin {
+      background: #000;
+      color: #fff;
+    }
+
+    .tag-note {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      color: #000;
+    }
+
+    .tag-unused {
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      color: var(--gray-700);
+    }
+
+    .tag-ga4 {
+      background: #000;
+      color: #fff;
+    }
+
+    .source {
+      color: var(--gray-700);
+      display: block;
+      font-size: 0.82rem;
+      margin-top: 12px;
+    }
+
+    .matrix {
+      background: #fff;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+
+    .row {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: 160px 1fr 1fr 1fr;
+      padding: 15px 18px;
+    }
+
+    .row+.row {
+      border-top: 1px solid var(--gray-300);
+    }
+
+    .row.header {
+      background: #000;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .row .event-name {
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .callout {
+      background: #fff;
+      border-left: 3px solid #000;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+      padding: 18px 20px;
+    }
+
+    .flow {
+      background: #fff;
+      border: 1px solid var(--gray-300);
+      border-radius: var(--radius);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 0.82rem;
+      line-height: 1.8;
+      padding: 20px 24px;
+    }
+
+    .footer {
+      border-top: 1px solid var(--gray-300);
+      color: var(--gray-700);
+      font-size: 0.78rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      margin-top: 56px;
+      padding-top: 20px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    @media (max-width: 900px) {
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .row.header {
+        display: none;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .hero {
+        padding: 30px 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <header class="hero">
+      <div
+        style="font-size:1.3rem;font-weight:700;letter-spacing:0.18em;color:#fff;margin-bottom:28px;opacity:0.9;text-transform:uppercase;">
+        RHEON
+      </div>
+      <p class="eyebrow">Guia para agência</p>
+      <h1>GTM &amp; Eventos de Rastreamento</h1>
+      <p>
+        Documentação completa de como o Google Tag Manager e o GA4 são
+        instalados na loja, como os eventos são enviados ao
+        <code>dataLayer</code>e o que cada evento faz, com payload e gatilho
+        no código.
+      </p>
+      <nav class="quick-nav" aria-label="Atalhos">
+        <a href="#architecture">Arquitetura</a>
+        <a href="#how">Como funciona</a>
+        <a href="#catalog">Catálogo</a>
+        <a href="#payloads">Payloads</a>
+        <a href="#matrix">Matriz</a>
+      </nav>
+    </header>
+
+    <section id="architecture">
+      <h2>Arquitetura</h2>
+      <p class="section-intro">
+        O rastreamento é multi-tenant: cada loja carrega seu próprio container
+        GTM e ID de Analytics a partir de <code>storeSettings.google</code>,
+        retornado pela API de configurações do tenant.
+      </p>
+
+      <div class="flow" aria-label="Fluxo de dados GTM">
+        storeSettings.google (Admin/API)
+        <br>
+        &nbsp;&nbsp;↓
+        <br>
+        src/pages/_app.tsx → scripts GTM + GA4
+        <br>
+        &nbsp;&nbsp;↓
+        <br>
+        src/Gtm/index.ts → eventDataLayer() / sanitizeTag()
+        <br>
+        &nbsp;&nbsp;↓
+        <br>
+        Módulos GTM.ts por domínio + chamadas inline
+        <br>
+        &nbsp;&nbsp;↓
+        <br>
+        window.dataLayer.push(...)
+      </div>
+
+      <div class="grid" style="margin-top:16px">
+        <article class="card">
+          <span class="tag tag-admin">Admin/API</span>
+          <h3>Configuração no Admin</h3>
+          <ul>
+            <li>
+              GTM: <code>google.tagManager.ativo</code>e
+              <code>google.tagManager.codigo</code>
+            </li>
+            <li>
+              GA4: <code>google.analytics.ativo</code>e
+              <code>google.analytics.codigo</code>
+            </li>
+            <li>
+              Ads: <code>google.adWords</code>(schema existe, sem
+              implementação no frontend)
+            </li>
+          </ul>
+          <span class="source">Schema: src/schemas/StoreSettings.tsx</span>
+        </article>
+        <article class="card">
+          <span class="tag tag-api">Instalação</span>
+          <h3>Scripts em _app.tsx</h3>
+          <ul>
+            <li>
+              GTM: bootstrap padrão (<code>gtm.js</code>,
+              <code>gtm.start</code>), noscript iframe, id
+              <code>lw-google-tagManager</code>
+            </li>
+            <li>
+              GA4: <code>gtag/js</code>+ <code>gtag('config')</code>, id
+              <code>lw-google-analytics</code>
+            </li>
+            <li>
+              Ambos compartilham o mesmo array <code>dataLayer</code>
+            </li>
+          </ul>
+          <span class="source">Arquivo: src/pages/_app.tsx</span>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Módulos</span>
+          <h3>Onde os eventos são definidos</h3>
+          <ul>
+            <li>
+              <code>src/Gtm/index.ts</code>— utilitários centrais
+            </li>
+            <li>
+              <code>src/templates/*/GTM.ts</code>— Header, PDP, Cart,
+              Checkout, Offers, ShowcaseFilters
+            </li>
+            <li>
+              <code>src/components/*/GTM.ts</code>— ProductCard, Banner
+            </li>
+            <li>Chamadas inline em páginas, hooks e BrandCard</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section id="how">
+      <h2>Como os eventos são enviados</h2>
+      <p class="section-intro">
+        Todo evento customizado passa por <code>eventDataLayer()</code>. O
+        contrato para tags/variáveis no GTM é o namespace
+        <code>marketplace</code>no payload.
+      </p>
+
+      <div class="callout">
+        <h3>eventDataLayer(data)</h3>
+        <p>
+          Garante <code>window.dataLayer</code>, faz push de
+          <code>{ marketplace: null }</code>(limpa o namespace anterior) e em
+          seguida faz push do objeto <code>data</code>com
+          <code>event</code>+ <code>marketplace</code>.
+        </p>
+        <pre>window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({ marketplace: null });
+window.dataLayer.push(data);</pre>
+        <span class="source">Arquivo: src/Gtm/index.ts</span>
+      </div>
+
+      <div class="grid" style="margin-top:16px">
+        <article class="card">
+          <span class="tag tag-note">Sanitização</span>
+          <h3>sanitizeTag(tag)</h3>
+          <p>
+            Normaliza strings para o dataLayer: NFD, lowercase, barras e
+            espaços viram hífen, remove acentos e caracteres especiais nas
+            bordas. Usado em nomes de eventos, categorias, cupons e campos de
+            texto.
+          </p>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Padrão de payload</span>
+          <h3>Estrutura comum</h3>
+          <pre>{
+  event: "nome_do_evento",
+  marketplace: {
+    /* campos específicos */
+  }
+}</pre>
+        </article>
+        <article class="card">
+          <span class="tag tag-ga4">GA4 Ecommerce</span>
+          <h3>Eventos alinhados ao GA4</h3>
+          <p>
+            Nomes como <code>view_cart</code>, <code>add_to_cart</code>,
+            <code>remove_from_cart</code>, <code>begin_checkout</code>,
+            <code>add_shipping_info</code>, <code>add_payment_info</code>,
+            <code>purchase</code>e <code>add_to_wishlist</code>seguem a
+            convenção recomendada do GA4, com dados em
+            <code>marketplace.items[]</code>.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="catalog">
+      <h2>Catálogo de eventos</h2>
+      <p class="section-intro">
+        Eventos agrupados por área funcional. Quando o mesmo nome aparece em
+        contextos diferentes (ex.: <code>add_to_cart</code>), o gatilho e o
+        módulo definem a origem.
+      </p>
+
+      <h3 style="margin-top:28px">Bootstrap</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">gtm.js</div>
+          <div>Inicialização do container GTM no carregamento da página.</div>
+          <div>
+            <code>gtm.start</code>(timestamp)
+          </div>
+          <div>
+            Script GTM em <code>_app.tsx</code>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">Busca &amp; Descoberta</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">search</div>
+          <div>Usuário submete busca no header.</div>
+          <div>
+            <code>search_term</code>, <code>is_seller_page</code>,
+            <code>is_seller_search_active</code>
+          </div>
+          <div>Header/MiddleSearch — submit do formulário</div>
+        </div>
+        <div class="row">
+          <div class="event-name">product_details_search</div>
+          <div>Clique em produto no autocomplete da busca.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>
+            (id, marca, nome, fabricante, categoria)
+          </div>
+          <div>Header/MiddleSearch — clique no autocomplete</div>
+        </div>
+        <div class="row">
+          <div class="event-name">search_page_success</div>
+          <div>Resultados da página de busca carregados (página 1).</div>
+          <div>
+            <code>route</code>, <code>search_term</code>,
+            <code>linx_is_active</code>, <code>search_is_linx</code>,
+            <code>is_success</code>, <code>total_results</code>
+          </div>
+          <div>
+            pages/search — <code>useEffect</code>ao receber resultados
+          </div>
+        </div>
+        <div class="row">
+          <div class="event-name">brand_click</div>
+          <div>Clique em card de marca na vitrine.</div>
+          <div>
+            <code>brand_id</code>, <code>brand_name</code>,
+            <code>brand_permalink</code>
+          </div>
+          <div>components/BrandCard — clique no link</div>
+        </div>
+        <div class="row">
+          <div class="event-name">category_click</div>
+          <div>Clique em categoria no menu de navegação.</div>
+          <div>
+            <code>category</code>, <code>categoryHref</code>,
+            <code>categoryParent</code>
+          </div>
+          <div>Header/Nav — clique em item do menu</div>
+        </div>
+        <div class="row">
+          <div class="event-name">showcases_filter_control</div>
+          <div>
+            Toggle de entrega turbo, entrega ou retirada nas vitrines.
+          </div>
+          <div>
+            <code>filter_name</code>(<code>switch_delivery</code>|
+            <code>button_delivery</code>| <code>button_pickup</code>),
+            <code>route</code>, <code>filter_status</code>
+          </div>
+          <div>ShowcaseFilters/Filters — toggles de entrega</div>
+        </div>
+        <div class="row">
+          <div class="event-name">showcases_filter_change</div>
+          <div>Alteração de filtro (preço, atributos, etc.).</div>
+          <div>
+            <code>field</code>, <code>value</code>
+          </div>
+          <div>ShowcaseFilters/Filters — mudança de filtro</div>
+        </div>
+        <div class="row">
+          <div class="event-name">showcases_order_by_change</div>
+          <div>Alteração da ordenação da vitrine.</div>
+          <div>
+            <code>old_order</code>, <code>new_order</code>
+          </div>
+          <div>ShowcaseFilters/Grid — dropdown de ordenação</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">Produto / PDP</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">product_details</div>
+          <div>Visualização da página de produto (PDP).</div>
+          <div>
+            <code>currency</code>, <code>value</code>,
+            <code>geolocation_is_active</code>, <code>items[]</code>rico (sku,
+            seller, categoria, ean, estoque, atributos, url, imagem, retenção)
+          </div>
+          <div>
+            Pdp/index — <code>useEffect</code>no mount
+          </div>
+        </div>
+        <div class="row">
+          <div class="event-name">add_to_cart</div>
+          <div>Produto adicionado ao carrinho a partir da PDP.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>com
+            quantidade
+          </div>
+          <div>Pdp/BuyBox — sucesso da mutation de carrinho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">add_to_wishlist</div>
+          <div>Produto adicionado à lista de desejos na PDP.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>
+          </div>
+          <div>Pdp/BuyBox — sucesso ao favoritar</div>
+        </div>
+        <div class="row">
+          <div class="event-name">remove_from_wishlist</div>
+          <div>Produto removido da lista de desejos na PDP.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>
+          </div>
+          <div>Pdp/BuyBox — sucesso ao desfavoritar</div>
+        </div>
+        <div class="row">
+          <div class="event-name">freight_at_pdp</div>
+          <div>Cálculo de frete na PDP concluído.</div>
+          <div>
+            <code>freight_zip_code</code>, <code>freight_success</code>,
+            <code>items[]</code>, <code>freight_response[]</code>
+          </div>
+          <div>Pdp/BuyBox — sucesso do cálculo de frete</div>
+        </div>
+        <div class="row">
+          <div class="event-name">btn_click-pdp-buy_now</div>
+          <div>Clique em "Comprar agora" na PDP.</div>
+          <div>
+            <code>route</code>
+          </div>
+          <div>Pdp/BuyBox — botão comprar</div>
+        </div>
+        <div class="row">
+          <div class="event-name">btn_click-pdp-add_to_cart</div>
+          <div>Clique em "Adicionar ao carrinho" na PDP.</div>
+          <div>
+            <code>route</code>
+          </div>
+          <div>Pdp/BuyBox — botão adicionar</div>
+        </div>
+        <div class="row">
+          <div class="event-name">click_seller_PDP</div>
+          <div>Clique no link do seller na PDP.</div>
+          <div>
+            <code>seller_id</code>, <code>seller_code</code>,
+            <code>seller_name</code>, <code>seller_permalink</code>
+          </div>
+          <div>Pdp/BuyBox — link do seller</div>
+        </div>
+        <div class="row">
+          <div class="event-name">related_product_click</div>
+          <div>Clique em produto relacionado na PDP.</div>
+          <div>
+            <code>id</code>, <code>price</code>, <code>category</code>,
+            <code>name</code>, <code>sku</code>, <code>url</code>,
+            <code>geolocation_is_active</code>
+          </div>
+          <div>Pdp/index — clique em relacionado</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">Ofertas</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">add_to_cart</div>
+          <div>Oferta adicionada ao carrinho na página de ofertas.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>
+            (campos específicos de oferta)
+          </div>
+          <div>Offers/index — sucesso da mutation</div>
+        </div>
+        <div class="row">
+          <div class="event-name">btn_click-offers-buy_now</div>
+          <div>Clique em "Comprar agora" na página de ofertas.</div>
+          <div>
+            <code>route</code>
+          </div>
+          <div>Offers/index — botão comprar</div>
+        </div>
+        <div class="row">
+          <div class="event-name">btn_click-offers-add_to_cart</div>
+          <div>Clique em "Adicionar" na página de ofertas.</div>
+          <div>
+            <code>route</code>
+          </div>
+          <div>Offers/index — botão adicionar</div>
+        </div>
+        <div class="row">
+          <div class="event-name">click_seller_offers</div>
+          <div>Clique no link do seller na página de ofertas.</div>
+          <div>
+            <code>seller_id</code>, <code>seller_code</code>,
+            <code>seller_name</code>, <code>seller_permalink</code>
+          </div>
+          <div>Offers/index — link do seller</div>
+        </div>
+        <div class="row">
+          <div class="event-name">offers_details</div>
+          <div>
+            <span class="tag tag-unused">Não chamado</span>Visualização
+            detalhada da página de ofertas com frete.
+          </div>
+          <div>
+            <code>permalink</code>, <code>items[]</code>com opções de frete
+            por oferta
+          </div>
+          <div>Definido em Offers/GTM.ts — sem chamada no código</div>
+        </div>
+        <div class="row">
+          <div class="event-name">offer_freight_success</div>
+          <div>
+            <span class="tag tag-unused">Não chamado</span>Resumo de sucesso
+            do frete na página de ofertas.
+          </div>
+          <div>
+            <code>offers_length</code>, <code>freight_length</code>,
+            <code>offers_page_warn</code>
+          </div>
+          <div>Definido em Offers/GTM.ts — sem chamada no código</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">Carrinho</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">view_cart</div>
+          <div>Visualização do carrinho com itens.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>coupon</code>,
+            <code>coupon_discount</code>, <code>items[]</code>com
+            <code>index</code>
+          </div>
+          <div>
+            pages/cart — <code>useEffect</code>quando carrinho não vazio
+          </div>
+        </div>
+        <div class="row">
+          <div class="event-name">add_to_cart</div>
+          <div>Produto adicionado via card de produto (vitrine).</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>com
+            <code>index</code>
+          </div>
+          <div>ProductCard/Button — sucesso ao adicionar</div>
+        </div>
+        <div class="row">
+          <div class="event-name">edit_from_cart</div>
+          <div>Quantidade alterada no carrinho ou no mini-card.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>coupon</code>,
+            <code>items[]</code>
+          </div>
+          <div>Cart/index ou ProductCard/Button — edição de quantidade</div>
+        </div>
+        <div class="row">
+          <div class="event-name">remove_from_cart</div>
+          <div>Item removido do carrinho.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>com
+            quantidade removida
+          </div>
+          <div>Cart/index ou ProductCard/Button — qty = 0</div>
+        </div>
+        <div class="row">
+          <div class="event-name">apply_coupon</div>
+          <div>Tentativa de aplicar cupom (sucesso ou erro).</div>
+          <div>
+            <code>coupon</code>, <code>coupon_success</code>,
+            <code>coupon_message</code>(se falha)
+          </div>
+          <div>Cart/index — mutation de cupom</div>
+        </div>
+        <div class="row">
+          <div class="event-name">remove_coupon</div>
+          <div>Remoção de cupom do carrinho.</div>
+          <div>
+            <code>coupon</code>, <code>coupon_success</code>
+          </div>
+          <div>Cart/index — delete cupom</div>
+        </div>
+        <div class="row">
+          <div class="event-name">click_seller_cart</div>
+          <div>Clique no link do seller dentro do carrinho.</div>
+          <div>
+            <code>seller_id</code>, <code>seller_code</code>,
+            <code>seller_name</code>, <code>seller_permalink</code>
+          </div>
+          <div>Cart/Items — links do seller (4 pontos)</div>
+        </div>
+        <div class="row">
+          <div class="event-name">minimum_value_at_cart</div>
+          <div>
+            <span class="tag tag-unused">Não chamado</span>Valor mínimo por
+            grupo de entrega no carrinho.
+          </div>
+          <div>
+            <code>delivery_groups_minimum_value[]</code>
+          </div>
+          <div>Definido em Cart/GTM.ts — sem chamada no código</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">Checkout (funil GA4)</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">begin_checkout</div>
+          <div>Início do checkout com dados do pedido.</div>
+          <div>
+            <code>currency</code>, <code>value</code>,<code>total_items</code>
+            , <code>value_without_shipping</code>,<code>coupon</code>,
+            <code>items[]</code>
+          </div>
+          <div>
+            Checkout/index — <code>useEffect</code>no mount
+          </div>
+        </div>
+        <div class="row">
+          <div class="event-name">add_shipping_info</div>
+          <div>Opção de entrega selecionada para um seller.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>coupon</code>,
+            <code>items[][]</code>com <code>delivery_group</code>
+          </div>
+          <div>Checkout/DeliveryOptions — sucesso da mutation</div>
+        </div>
+        <div class="row">
+          <div class="event-name">add_payment_info</div>
+          <div>Forma de pagamento aberta/selecionada.</div>
+          <div>
+            <code>payment_type</code>, <code>discount</code>,
+            <code>coupon</code>, <code>items[]</code>
+          </div>
+          <div>Checkout/Payment — abertura do accordion de pagamento</div>
+        </div>
+        <div class="row">
+          <div class="event-name">purchase</div>
+          <div>Compra finalizada com sucesso.</div>
+          <div>
+            <code>transaction_id</code>, <code>payment_status</code>(
+            <code>REGISTRADO</code>), <code>user_email</code>,
+            <code>shipping</code>, <code>payment_type</code>,
+            <code>installments</code>, <code>items[]</code>
+          </div>
+          <div>Checkout/Payment — sucesso ao finalizar pedido</div>
+        </div>
+      </div>
+      <!--
+        <h3 style="margin-top:28px">Autenticação &amp; Usuário</h3>
+        <div class="matrix">
+          <div class="row header">
+            <div>Evento</div>
+            <div>O que faz</div>
+            <div>Payload principal</div>
+            <div>Gatilho</div>
+          </div>
+          <div class="row">
+            <div class="event-name">user-reconnected</div>
+            <div>
+              Sessão existente detectada ao carregar a loja (fora de /auth).
+            </div>
+            <div>
+              <code>firstName</code>, <code>lastName</code>, <code>email</code>,
+              <code>isNew</code>
+            </div>
+            <div>
+              hooks/useUser — <code>useEffect</code>no mount
+            </div>
+          </div>
+          <div class="row">
+            <div class="event-name">user-register</div>
+            <div>Primeiro login após cadastro via Keycloak.</div>
+            <div>
+              <code>firstName</code>, <code>lastName</code>, <code>email</code>
+            </div>
+            <div>
+              pages/auth/kc — <code>firstLogin === true</code>
+            </div>
+          </div>
+          <div class="row">
+            <div class="event-name">user-login</div>
+            <div>Login de usuário recorrente via Keycloak.</div>
+            <div>
+              <code>firstName</code>, <code>lastName</code>, <code>email</code>
+            </div>
+            <div>
+              pages/auth/kc — <code>firstLogin === false</code>
+            </div>
+          </div>
+          <div class="row">
+            <div class="event-name">keycloak-back-to-login</div>
+            <div>Resultado da troca de token Keycloak → sessão NextAuth.</div>
+            <div>
+              <code>logged</code>, <code>message</code>
+            </div>
+            <div>
+              pages/auth/kc — após <code>signIn('credentials')</code>
+            </div>
+          </div>
+        </div>
+      -->
+
+      <h3 style="margin-top:28px">Geolocalização</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">geolocation_status</div>
+          <div>Modal de geolocalização aberto ou fechado.</div>
+          <div>
+            <code>step</code>(<code>default</code>| <code>search</code>|
+            <code>register</code>), <code>status</code>(<code>opened</code>|
+            <code>closed</code>), <code>is_authenticated</code>
+          </div>
+          <div>Header/MiddleGeo — mudança de estado do modal</div>
+        </div>
+        <div class="row">
+          <div class="event-name">geolocation_step_changed</div>
+          <div>Navegação entre etapas do fluxo de endereço.</div>
+          <div>
+            <code>old_step</code>, <code>next_step</code>
+          </div>
+          <div>Header/MiddleGeo — voltar ou avançar etapa</div>
+        </div>
+        <div class="row">
+          <div class="event-name">geolocation_address_selected</div>
+          <div>Endereço confirmado, salvo ou com erro.</div>
+          <div>
+            <code>step</code>, <code>address_success</code>,
+            <code>is_authenticated</code>, <code>error_message</code>
+          </div>
+          <div>MiddleGeo, Addresses, Register — confirmação/erro</div>
+        </div>
+        <div class="row">
+          <div class="event-name">geolocation_pin_dragged</div>
+          <div>Pin do mapa arrastado pelo usuário.</div>
+          <div>
+            <code>is_authenticated</code>
+          </div>
+          <div>Header/MiddleGeo/Search — drag do pin</div>
+        </div>
+        <div class="row">
+          <div class="event-name">geolocation_is_from</div>
+          <div>Origem da localização: navegador ou Google.</div>
+          <div>
+            <code>address_is_from</code>(<code>navigator</code>|
+            <code>google</code>), <code>is_authenticated</code>
+          </div>
+          <div>Header/MiddleGeo/Search — geolocalização ou autocomplete</div>
+        </div>
+        <div class="row">
+          <div class="event-name">geolocation_removed</div>
+          <div>Endereço de geolocalização removido.</div>
+          <div>
+            <code>is_authenticated</code>
+          </div>
+          <div>Header/MiddleGeo/Trigger — limpar endereço</div>
+        </div>
+      </div>
+
+      <h3 style="margin-top:28px">UI, Navegação &amp; Banners</h3>
+      <div class="matrix">
+        <div class="row header">
+          <div>Evento</div>
+          <div>O que faz</div>
+          <div>Payload principal</div>
+          <div>Gatilho</div>
+        </div>
+        <div class="row">
+          <div class="event-name">btn_click- { nome}</div>
+          <div>Clique em botões de login/cadastro (nome dinâmico).</div>
+          <div>
+            <code>route</code>
+          </div>
+          <div>
+            Header/MiddleUser: <code>header-entre_ou_cadastre</code>,
+            <code>header-popover-entrar</code>; SideMenu:
+            <code>side_menu-entre_ou_cadastre</code>
+          </div>
+        </div>
+        <div class="row">
+          <div class="event-name">banner-click</div>
+          <div>Clique em banner promocional.</div>
+          <div>
+            <code>banner_id</code>, <code>banner_type</code>,
+            <code>banner_order</code>, <code>banner_title</code>,
+            <code>banner_img_url</code>, <code>banner_location</code>,
+            <code>banner_permalink</code>
+          </div>
+          <div>
+            components/Banner — clique (desativável via
+            <code>triggerGTM=false</code>, ex.: press)
+          </div>
+        </div>
+        <div class="row">
+          <div class="event-name">add_to_wishlist</div>
+          <div>Favoritar produto no card da vitrine.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>
+          </div>
+          <div>ProductCard/Favorite — toggle favorito</div>
+        </div>
+        <div class="row">
+          <div class="event-name">remove_from_wishlist</div>
+          <div>Desfavoritar produto no card da vitrine.</div>
+          <div>
+            <code>currency</code>, <code>value</code>, <code>items[]</code>
+          </div>
+          <div>ProductCard/Favorite — toggle favorito</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="payloads">
+      <h2>Padrões de payload</h2>
+      <p class="section-intro">
+        Campos recorrentes no namespace <code>marketplace</code>. Use esta
+        referência ao configurar variáveis e triggers no GTM.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <span class="tag tag-ga4">Ecommerce</span>
+          <h3>items[]</h3>
+          <ul>
+            <li>
+              <code>item_id</code>, <code>item_name</code>,
+              <code>item_sku</code>
+            </li>
+            <li>
+              <code>item_sku_seller</code>, <code>item_brand_id</code>,
+              <code>item_brand</code>
+            </li>
+            <li>
+              <code>item_seller_id</code>, <code>item_category</code>,
+              <code>item_category_id</code>
+            </li>
+            <li>
+              <code>price</code>, <code>discount</code>, <code>quantity</code>
+              , <code>index</code>
+            </li>
+            <li>
+              <code>item_image</code>, <code>item_url</code>,
+              <code>item_sob_encomenda</code>
+            </li>
+            <li>
+              Checkout: <code>delivery_group</code>,
+              <code>delivery_group_value</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Seller</span>
+          <h3>Campos de seller</h3>
+          <ul>
+            <li>
+              <code>seller_id</code>, <code>seller_code</code>
+            </li>
+            <li>
+              <code>seller_name</code>, <code>seller_permalink</code>
+            </li>
+            <li>
+              Eventos: <code>click_seller_PDP</code>,
+              <code>click_seller_cart</code>, <code>click_seller_offers</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Cupom</span>
+          <h3>Campos de cupom</h3>
+          <ul>
+            <li>
+              <code>coupon</code>— código sanitizado
+            </li>
+            <li>
+              <code>coupon_discount</code>— valor do desconto
+            </li>
+            <li>
+              <code>coupon_success</code>, <code>coupon_message</code>—
+              apply/remove
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Geolocalização</span>
+          <h3>Campos de geo</h3>
+          <ul>
+            <li>
+              <code>geolocation_is_active</code>— lat/long válidos
+            </li>
+            <li>
+              <code>step</code>, <code>status</code>,
+              <code>is_authenticated</code>
+            </li>
+            <li>
+              <code>address_success</code>, <code>error_message</code>
+            </li>
+            <li>
+              <code>address_is_from</code>: <code>navigator</code>ou
+              <code>google</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Checkout</span>
+          <h3>Campos de compra</h3>
+          <ul>
+            <li>
+              <code>transaction_id</code>, <code>payment_status</code>
+            </li>
+            <li>
+              <code>payment_type</code>, <code>installments</code>
+            </li>
+            <li>
+              <code>value_without_shipping</code>, <code>shipping</code>
+            </li>
+            <li>
+              <code>user_email</code>, <code>total_items</code>
+            </li>
+          </ul>
+        </article>
+        <article class="card">
+          <span class="tag tag-note">Sanitização</span>
+          <h3>sanitizeTag()</h3>
+          <p>
+            Aplicado em termos de busca, nomes de produto/categoria, cupons,
+            rotas, mensagens de erro e nomes dinâmicos de botões. Garante
+            consistência para variáveis do GTM.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section id="matrix">
+      <h2>Matriz de módulos e arquivos</h2>
+      <p class="section-intro">
+        Mapa dos módulos <code>GTM.ts</code>exportados e onde são consumidos
+        no código.
+      </p>
+
+      <div class="matrix">
+        <div class="row header">
+          <div>Módulo</div>
+          <div>Funções exportadas</div>
+          <div>Consumido em</div>
+          <div>Eventos principais</div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Header/GTM.ts</strong>
+          </div>
+          <div>
+            search, productClick, categoryClick, buttonClick, geoStatus,
+            geoStepChanged, geoAddressSelected, geoPinDragged,
+            geoAddressIsFrom, geoAddressRemoved
+          </div>
+          <div>MiddleSearch, Nav, MiddleUser, MiddleGeo/*</div>
+          <div>
+            search, product_details_search, category_click, geolocation_*
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Pdp/GTM.ts</strong>
+          </div>
+          <div>
+            productDetails, addToCart, editWishlistItem, freightAtPdp,
+            btnClickAtPdp, sellerLinkClickAtPdp, relatedProductClick
+          </div>
+          <div>Pdp/index, Pdp/BuyBox</div>
+          <div>
+            product_details, add_to_cart, freight_at_pdp, btn_click-pdp-*
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Cart/GTM.ts</strong>
+          </div>
+          <div>
+            viewCart, editCartItem, couponEvents, sellerLinkClickAtCart,
+            minimumValueAtCart
+          </div>
+          <div>pages/cart, Cart/index, Cart/Items</div>
+          <div>
+            view_cart, edit_from_cart, apply_coupon, click_seller_cart
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Checkout/GTM.ts</strong>
+          </div>
+          <div>beginCheckout, addShippingInfo, addPaymentInfo, purchase</div>
+          <div>Checkout/index, DeliveryOptions, Payment</div>
+          <div>
+            begin_checkout → add_shipping_info → add_payment_info → purchase
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Offers/GTM.ts</strong>
+          </div>
+          <div>
+            offersDetails, addToCart, btnClickAtOffers,
+            sellerLinkClickAtOffers, offerFreightSuccess
+          </div>
+          <div>Offers/index</div>
+          <div>add_to_cart, btn_click-offers-*, click_seller_offers</div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>ShowcaseFilters/GTM.ts</strong>
+          </div>
+          <div>filterSwitchControl, filtersChange, orderByChange</div>
+          <div>ShowcaseFilters/Filters, Grid</div>
+          <div>showcases_filter_*, showcases_order_by_change</div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>ProductCard/GTM.ts</strong>
+          </div>
+          <div>editCartItem, editWishlistItem</div>
+          <div>ProductCard/Button, Favorite</div>
+          <div>add_to_cart, edit_from_cart, add/remove_from_wishlist</div>
+        </div>
+        <div class="row">
+          <div>
+            <strong>Banner/GTM.ts</strong>
+          </div>
+          <div>btnClickAtPdp (banner click)</div>
+          <div>components/Banner</div>
+          <div>banner-click</div>
+        </div>
+        <!--
+        <div class="row">
+          <div>
+            <strong>Inline</strong>
+          </div>
+          <div>eventDataLayer direto</div>
+          <div>useUser, auth/kc, search, BrandCard</div>
+          <div>
+            user-*, keycloak-back-to-login, search_page_success, brand_click
+          </div>
+        </div>
+        -->
+      </div>
+    </section>
+
+    <p class="footer">
+      Guia GTM &amp; Eventos — Lean Marketplace Farma — documentação estática
+      para agência e time de marketing.
+    </p>
+  </main>
+</body>
+
+</html>
